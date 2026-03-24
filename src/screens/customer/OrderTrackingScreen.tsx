@@ -11,175 +11,204 @@ import {
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { theme } from '../../constants/theme';
+import { useOrder } from '../../context/OrderContext';
+import { OrderStatus } from '../../types';
 
-const RECENT_HISTORY = [
-  {
-    id: '1',
-    name: 'Napoli Pizzeria',
-    date: 'OCT 12, 2023',
-    price: '$32.40',
-    status: 'DELIVERED',
-    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400&auto=format&fit=crop',
-  },
-  {
-    id: '2',
-    name: 'Sakura Sushi',
-    date: 'OCT 08, 2023',
-    price: '$45.12',
-    status: 'DELIVERED',
-    image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=400&auto=format&fit=crop',
-  },
-  {
-    id: '3',
-    name: 'Urban Grill',
-    date: 'OCT 03, 2023',
-    price: '$19.95',
-    status: 'DELIVERED',
-    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400&auto=format&fit=crop',
-  },
+const STEP_CONFIG: { key: OrderStatus; icon: string; label: string }[] = [
+  { key: 'PENDING', icon: 'hourglass-empty', label: 'Onay Bekleniyor' },
+  { key: 'PREPARING', icon: 'restaurant-menu', label: 'Hazırlanıyor' },
+  { key: 'ON_WAY', icon: 'delivery-dining', label: 'Kuryede' },
+  { key: 'DELIVERED', icon: 'home', label: 'Teslim Edildi' },
 ];
 
-export function OrderTrackingScreen({ navigation }: any) {
+function getStepIndex(status: OrderStatus): number {
+  return STEP_CONFIG.findIndex((s) => s.key === status);
+}
+
+function formatDate(iso: string): string {
+  if (!iso) return '';
+  const d = new Date(iso);
+  const h = d.getHours().toString().padStart(2, '0');
+  const m = d.getMinutes().toString().padStart(2, '0');
+  return `${h}:${m}`;
+}
+
+export function OrderTrackingScreen({ route, navigation }: any) {
+  const { orderId } = route.params;
+  const { activeOrders, orderHistory } = useOrder();
+  const [rating, setRating] = React.useState(0);
+  const [hasRated, setHasRated] = React.useState(false);
+
+  // Look for the order in active first, then history
+  const activeOrder = activeOrders.find(o => o.id === orderId) || orderHistory.find(o => o.id === orderId);
+
+  if (!activeOrder) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <MaterialIcons name="arrow-back" size={24} color={theme.colors.textPrimary} />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>Sipariş Bulunamadı</Text>
+          <View style={{ width: 24 }} />
+        </View>
+        <View style={styles.noActiveContainer}>
+          <MaterialIcons name="error-outline" size={48} color="#CCC" />
+          <Text style={styles.noActiveTitle}>Sipariş Bulunamadı</Text>
+          <Text style={styles.noActiveSubtitle}>Bu sipariş numarasına ait bir kayıt görüntülenemiyor.</Text>
+          <TouchableOpacity
+            style={styles.browseBtn}
+            onPress={() => navigation.navigate('MarketplaceHome')}
+          >
+            <Text style={styles.browseBtnText}>Ana Sayfaya Dön</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" />
-      
+
       {/* TopAppBar */}
       <View style={styles.header}>
-        <View style={styles.headerLeft}>
-          <MaterialIcons name="location-on" size={24} color={theme.colors.primary} />
-          <Text style={styles.brandTitle}>The Culinary Curator</Text>
-        </View>
-        <View style={styles.headerRight}>
-          <TouchableOpacity style={styles.iconButton}>
-            <MaterialIcons name="settings" size={24} color={theme.colors.textPrimary} />
-          </TouchableOpacity>
-          <Image
-            source={{ uri: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80' }}
-            style={styles.avatar}
-          />
-        </View>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+          <MaterialIcons name="arrow-back" size={24} color={theme.colors.textPrimary} />
+        </TouchableOpacity>
+        <Text style={styles.brandTitle}>Sipariş Detayı</Text>
+        <View style={{ width: 24 }} />
       </View>
 
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
-        {/* Active Order Header */}
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionLabel}>ACTIVE ORDER</Text>
-          <Text style={styles.sectionTitle}>Track Status</Text>
+          <Text style={styles.sectionLabel}>{activeOrder.status === 'DELIVERED' ? 'GEÇMİŞ SİPARİŞ' : 'AKTİF SİPARİŞ'}</Text>
+          <Text style={styles.sectionTitle}>Durumu Takip Et</Text>
         </View>
 
-        {/* Active Order Card */}
         <View style={styles.activeCard}>
           <View style={styles.cardHeader}>
             <View>
-              <Text style={styles.restaurantName}>L'Artisan Brasserie</Text>
-              <Text style={styles.orderNumber}>Order #CUR-8829</Text>
+              <Text style={styles.restaurantName}>{activeOrder.restaurantName}</Text>
+              <Text style={styles.orderNumber}>Sipariş #{activeOrder.id}</Text>
             </View>
             <View style={styles.statusBadge}>
-              <MaterialIcons name="restaurant" size={14} color={theme.colors.success} />
-              <Text style={styles.statusBadgeText}>PREPARING</Text>
+              <MaterialIcons
+                name="restaurant"
+                size={14}
+                color={activeOrder.status === 'DELIVERED' ? theme.colors.success : theme.colors.primary}
+              />
+              <Text style={styles.statusBadgeText}>
+                {STEP_CONFIG[getStepIndex(activeOrder.status)].label.toUpperCase()}
+              </Text>
             </View>
           </View>
 
           {/* Vertical Stepper */}
           <View style={styles.stepper}>
-            <View style={styles.stepperLine} />
-            <View style={[styles.stepperLine, styles.stepperLineActive]} />
+            {STEP_CONFIG.map((step, index) => {
+              const currentIdx = getStepIndex(activeOrder.status);
+              const isCompleted = index <= currentIdx;
+              const isCurrent = index === currentIdx;
 
-            {/* Step 1 */}
-            <View style={styles.step}>
-              <View style={[styles.stepIcon, styles.stepIconActive]}>
-                <MaterialIcons name="check" size={14} color="#FFF" />
-              </View>
-              <View style={styles.stepText}>
-                <Text style={styles.stepTitle}>Waiting Approval</Text>
-                <Text style={styles.stepSubtitle}>Confirmed at 12:45 PM</Text>
-              </View>
-            </View>
-
-            {/* Step 2 */}
-            <View style={styles.step}>
-              <View style={[styles.stepIcon, styles.stepIconActive, styles.stepIconHighlight]}>
-                <MaterialIcons name="restaurant-menu" size={14} color="#FFF" />
-              </View>
-              <View style={styles.stepText}>
-                <Text style={[styles.stepTitle, { color: theme.colors.success }]}>Preparing</Text>
-                <Text style={[styles.stepSubtitle, { fontWeight: '500' }]}>The chef is crafting your meal</Text>
-              </View>
-            </View>
-
-            {/* Step 3 */}
-            <View style={styles.step}>
-              <View style={styles.stepIcon}>
-                <MaterialIcons name="delivery-dining" size={14} color="#999" />
-              </View>
-              <View style={styles.stepText}>
-                <Text style={[styles.stepTitle, styles.stepTitleInactive]}>Courier On Way</Text>
-                <Text style={styles.stepSubtitleInactive}>Awaiting pick-up</Text>
-              </View>
-            </View>
-
-            {/* Step 4 */}
-            <View style={styles.step}>
-              <View style={styles.stepIcon}>
-                <MaterialIcons name="home" size={14} color="#999" />
-              </View>
-              <View style={styles.stepText}>
-                <Text style={[styles.stepTitle, styles.stepTitleInactive]}>Delivered</Text>
-                <Text style={styles.stepSubtitleInactive}>Est. 1:20 PM</Text>
-              </View>
-            </View>
-          </View>
-        </View>
-
-        {/* Recent History Section */}
-        <View style={styles.historySection}>
-          <View style={styles.historyHeader}>
-            <h3 style={styles.historyTitle}>Recent History</h3>
-            <TouchableOpacity>
-              <Text style={styles.viewAllText}>View All</Text>
-            </TouchableOpacity>
-          </View>
-
-          <View style={styles.historyList}>
-            {RECENT_HISTORY.map((item) => (
-              <TouchableOpacity key={item.id} style={styles.historyItem} activeOpacity={0.7}>
-                <View style={styles.historyItemLeft}>
-                  <Image source={{ uri: item.image }} style={styles.historyImage} />
-                  <View>
-                    <Text style={styles.historyName}>{item.name}</Text>
-                    <Text style={styles.historyDate}>{item.date}</Text>
+              return (
+                <View key={step.key} style={styles.step}>
+                  {/* Connector Line */}
+                  {index < STEP_CONFIG.length - 1 && (
+                    <View
+                      style={[
+                        styles.connectorLine,
+                        isCompleted && index < currentIdx && styles.connectorLineActive,
+                      ]}
+                    />
+                  )}
+                  {/* Step Icon */}
+                  <View
+                    style={[
+                      styles.stepIcon,
+                      isCompleted && styles.stepIconActive,
+                      isCurrent && styles.stepIconHighlight,
+                    ]}
+                  >
+                    {isCompleted && !isCurrent ? (
+                      <MaterialIcons name="check" size={14} color="#FFF" />
+                    ) : (
+                      <MaterialIcons
+                        name={step.icon as any}
+                        size={14}
+                        color={isCompleted ? '#FFF' : '#999'}
+                      />
+                    )}
+                  </View>
+                  {/* Step Text */}
+                  <View style={styles.stepText}>
+                    <Text
+                      style={[
+                        styles.stepTitle,
+                        !isCompleted && styles.stepTitleInactive,
+                        isCurrent && { color: theme.colors.success },
+                      ]}
+                    >
+                      {step.label}
+                    </Text>
+                    <Text style={[styles.stepSubtitle, !isCompleted && styles.stepSubtitleInactive]}>
+                      {isCompleted
+                        ? isCurrent
+                          ? 'Şu an bu aşamada'
+                          : `${formatDate(activeOrder.createdAt)} tamamlandı`
+                        : 'Bekleniyor'}
+                    </Text>
                   </View>
                 </View>
-                <View style={styles.historyItemRight}>
-                  <Text style={styles.historyPrice}>{item.price}</Text>
-                  <Text style={styles.historyStatus}>{item.status}</Text>
-                </View>
-              </TouchableOpacity>
-            ))}
+              );
+            })}
+          </View>
+
+          {/* Order Total */}
+          <View style={styles.orderTotalRow}>
+            <Text style={styles.orderTotalLabel}>Sipariş Toplamı</Text>
+            <Text style={styles.orderTotalValue}>${activeOrder.totalPrice.toFixed(2)}</Text>
           </View>
         </View>
-      </ScrollView>
 
-      {/* Bottom Navigation */}
-      <View style={styles.bottomNav}>
-        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('MarketplaceHome')}>
-          <MaterialIcons name="home" size={24} color={theme.colors.textSecondary} />
-          <Text style={styles.navText}>HOME</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <MaterialIcons name="search" size={24} color={theme.colors.textSecondary} />
-          <Text style={styles.navText}>SEARCH</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItemActive}>
-          <MaterialIcons name="receipt-long" size={24} color={theme.colors.primary} />
-          <Text style={styles.navTextActive}>ORDERS</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <MaterialIcons name="person" size={24} color={theme.colors.textSecondary} />
-          <Text style={styles.navText}>PROFILE</Text>
-        </TouchableOpacity>
-      </View>
+        {/* Rating Section - Only for Delivered Orders */}
+        {activeOrder.status === 'DELIVERED' && !hasRated && (
+          <View style={styles.ratingCard}>
+            <Text style={styles.ratingTitle}>Siparişi Değerlendir</Text>
+            <Text style={styles.ratingSubtitle}>Deneyiminizi paylaşarak diğer kullanıcılarımıza yardımcı olun.</Text>
+            
+            <View style={styles.starsContainer}>
+              {[1, 2, 3, 4, 5].map((s) => (
+                <TouchableOpacity key={s} onPress={() => setRating(s)}>
+                  <MaterialIcons 
+                    name={s <= rating ? "star" : "star-border"} 
+                    size={40} 
+                    color={s <= rating ? "#FACC15" : "#CBD5E1"} 
+                  />
+                </TouchableOpacity>
+              ))}
+            </View>
+
+            <TouchableOpacity 
+              style={[styles.submitRatingBtn, rating === 0 && styles.disabledBtn]} 
+              disabled={rating === 0}
+              onPress={() => {
+                setHasRated(true);
+                alert('Değerlendirmeniz için teşekkürler!');
+              }}
+            >
+              <Text style={styles.submitRatingText}>Değerlendirmeyi Gönder</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+
+        {hasRated && (
+          <View style={styles.successCard}>
+            <MaterialIcons name="check-circle" size={48} color={theme.colors.success} />
+            <Text style={styles.successText}>Değerlendirmeniz alındı!</Text>
+          </View>
+        )}
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -199,36 +228,27 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#F0F0F0',
   },
-  headerLeft: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  backButton: {
+    padding: 8,
+    marginLeft: -8,
   },
   brandTitle: {
-    fontSize: 20,
-    fontWeight: '900',
+    fontSize: 18,
+    fontWeight: '800',
     color: theme.colors.textPrimary,
-    letterSpacing: -1,
+    letterSpacing: -0.5,
   },
-  headerRight: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 16,
-  },
-  iconButton: {
-    padding: 4,
-  },
-  avatar: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
-    backgroundColor: '#EEE',
+  headerTitle: {
+    fontSize: 18,
+    fontWeight: '800',
+    color: theme.colors.textPrimary,
   },
   scrollContent: {
     paddingHorizontal: 24,
     paddingTop: 16,
-    paddingBottom: 100,
+    paddingBottom: 40,
   },
+  // === SECTION HEADER ===
   sectionHeader: {
     marginBottom: 24,
   },
@@ -245,6 +265,7 @@ const styles = StyleSheet.create({
     color: theme.colors.textPrimary,
     letterSpacing: -1,
   },
+  // === ACTIVE CARD ===
   activeCard: {
     backgroundColor: '#FFF',
     borderRadius: theme.radius.md,
@@ -286,26 +307,27 @@ const styles = StyleSheet.create({
     color: theme.colors.success,
     letterSpacing: 0.5,
   },
+  // === STEPPER ===
   stepper: {
     paddingLeft: 4,
-  },
-  stepperLine: {
-    position: 'absolute',
-    left: 15,
-    top: 10,
-    bottom: 10,
-    width: 2,
-    backgroundColor: '#F0F0F0',
-  },
-  stepperLineActive: {
-    height: '33.3%',
-    backgroundColor: theme.colors.success,
   },
   step: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    paddingBottom: 40,
+    paddingBottom: 36,
     gap: 16,
+    position: 'relative',
+  },
+  connectorLine: {
+    position: 'absolute',
+    left: 11,
+    top: 24,
+    bottom: -12,
+    width: 2,
+    backgroundColor: '#F0F0F0',
+  },
+  connectorLineActive: {
+    backgroundColor: theme.colors.success,
   },
   stepIcon: {
     width: 24,
@@ -345,106 +367,110 @@ const styles = StyleSheet.create({
   stepSubtitleInactive: {
     color: '#CCC',
   },
-  historySection: {
+  orderTotalRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 20,
+    paddingTop: 16,
+    borderTopWidth: 1,
+    borderTopColor: '#F2F4F6',
+  },
+  orderTotalLabel: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: theme.colors.textSecondary,
+  },
+  orderTotalValue: {
+    fontSize: 18,
+    fontWeight: '900',
+    color: theme.colors.textPrimary,
+  },
+  // === NO ACTIVE ORDER ===
+  noActiveContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    paddingHorizontal: 24,
+  },
+  noActiveTitle: {
+    fontSize: 22,
+    fontWeight: '900',
+    color: theme.colors.textPrimary,
+    marginTop: 16,
+    marginBottom: 8,
+    letterSpacing: -0.5,
+  },
+  noActiveSubtitle: {
+    fontSize: 14,
+    color: theme.colors.textSecondary,
+    textAlign: 'center',
+    lineHeight: 22,
+    marginBottom: 24,
+  },
+  browseBtn: {
+    backgroundColor: theme.colors.primary,
+    paddingVertical: 14,
+    paddingHorizontal: 24,
+    borderRadius: 16,
+  },
+  browseBtnText: {
+    color: '#FFF',
+    fontSize: 16,
+    fontWeight: '700',
+  },
+  // Rating
+  ratingCard: {
+    backgroundColor: '#FFF',
+    padding: 24,
+    borderRadius: theme.radius.md,
+    ...theme.shadows.light,
+    alignItems: 'center',
+  },
+  ratingTitle: {
+    fontSize: 20,
+    fontWeight: '800',
+    color: theme.colors.textPrimary,
+    marginBottom: 8,
+  },
+  ratingSubtitle: {
+    fontSize: 14,
+    color: theme.colors.textSecondary,
+    textAlign: 'center',
+    marginBottom: 24,
+    lineHeight: 20,
+  },
+  starsContainer: {
+    flexDirection: 'row',
+    gap: 12,
     marginBottom: 32,
   },
-  historyHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
-    marginBottom: 16,
-  },
-  historyTitle: {
-    fontSize: 18,
-    fontWeight: '700',
-    color: theme.colors.textPrimary,
-  },
-  viewAllText: {
-    fontSize: 12,
-    fontWeight: '700',
-    color: theme.colors.primary,
-  },
-  historyList: {
-    gap: 12,
-  },
-  historyItem: {
-    backgroundColor: '#F2F4F6',
-    borderRadius: theme.radius.md,
+  submitRatingBtn: {
+    backgroundColor: theme.colors.primary,
+    width: '100%',
     padding: 16,
-    flexDirection: 'row',
+    borderRadius: 16,
     alignItems: 'center',
-    justifyContent: 'space-between',
   },
-  historyItemLeft: {
-    flexDirection: 'row',
+  submitRatingText: {
+    color: '#FFF',
+    fontSize: 16,
+    fontWeight: '700',
+  },
+  disabledBtn: {
+    backgroundColor: '#E2E8F0',
+  },
+  successCard: {
+    backgroundColor: '#FFF',
+    padding: 32,
+    borderRadius: theme.radius.md,
     alignItems: 'center',
-    gap: 12,
+    ...theme.shadows.light,
   },
-  historyImage: {
-    width: 40,
-    height: 40,
-    borderRadius: 8,
-  },
-  historyName: {
-    fontSize: 14,
+  successText: {
+    marginTop: 16,
+    fontSize: 16,
     fontWeight: '700',
     color: theme.colors.textPrimary,
-  },
-  historyDate: {
-    fontSize: 10,
-    color: theme.colors.textSecondary,
-    fontWeight: '600',
-    marginTop: 2,
-  },
-  historyItemRight: {
-    alignItems: 'flex-end',
-  },
-  historyPrice: {
-    fontSize: 14,
-    fontWeight: '800',
-    color: theme.colors.textPrimary,
-  },
-  historyStatus: {
-    fontSize: 10,
-    fontWeight: '800',
-    color: theme.colors.success,
-    marginTop: 2,
-  },
-  bottomNav: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',
-    paddingHorizontal: 24,
-    paddingBottom: 24,
-    paddingTop: 12,
-    borderTopWidth: 1,
-    borderTopColor: '#F0F0F0',
-  },
-  navItem: {
-    alignItems: 'center',
-  },
-  navItemActive: {
-    alignItems: 'center',
-    backgroundColor: 'rgba(255, 79, 0, 0.05)',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: theme.radius.md,
-  },
-  navText: {
-    fontSize: 10,
-    fontWeight: '600',
-    color: theme.colors.textSecondary,
-    marginTop: 4,
-  },
-  navTextActive: {
-    fontSize: 10,
-    fontWeight: '800',
-    color: theme.colors.primary,
-    marginTop: 4,
   },
 });

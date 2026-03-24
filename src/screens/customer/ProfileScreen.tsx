@@ -12,13 +12,24 @@ import {
 import { MaterialIcons } from '@expo/vector-icons';
 import { theme } from '../../constants/theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useOrder } from '../../context/OrderContext';
+import { useCart } from '../../context/CartContext';
+
+function formatHistoryDate(iso: string): string {
+  if (!iso) return '';
+  const d = new Date(iso);
+  const months = ['OCA', 'ŞUB', 'MAR', 'NİS', 'MAY', 'HAZ', 'TEM', 'AĞU', 'EYL', 'EKİ', 'KAS', 'ARA'];
+  return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+}
 
 export function ProfileScreen({ navigation }: any) {
   const insets = useSafeAreaInsets();
+  const { orderHistory } = useOrder();
+  const { itemCount } = useCart();
 
   const MENU_ITEMS = [
-    { id: '1', title: 'My Addresses', icon: 'location-on', description: 'Manage your delivery locations' },
-    { id: '2', title: 'Payment Methods', icon: 'payment', description: 'Saved cards and wallet' },
+    { id: '1', title: 'My Addresses', icon: 'location-on', description: 'Manage your delivery locations', screen: 'SavedAddresses' },
+    { id: '2', title: 'Payment Methods', icon: 'payment', description: 'Saved cards and wallet', screen: 'PaymentMethods' },
     { id: '3', title: 'Notifications', icon: 'notifications-none', description: 'Preferences and alerts' },
     { id: '4', title: 'Language', icon: 'language', description: 'English (US)' },
     { id: '5', title: 'Help & Support', icon: 'help-outline', description: 'FAQs and live chat' },
@@ -54,7 +65,7 @@ export function ProfileScreen({ navigation }: any) {
         {/* Stats Row - Asymmetrical Editorial Look */}
         <View style={styles.statsRow}>
           <View style={[styles.statItem, styles.statItemLarge]}>
-            <Text style={styles.statValue}>24</Text>
+            <Text style={styles.statValue}>{orderHistory.length}</Text>
             <Text style={styles.statLabel}>Total Orders</Text>
           </View>
           <View style={styles.statsColumn}>
@@ -69,11 +80,56 @@ export function ProfileScreen({ navigation }: any) {
           </View>
         </View>
 
-        {/* Action Menu */}
+        {/* Order History */}
+        <View style={styles.historyContainer}>
+          <View style={styles.historyHeader}>
+            <Text style={styles.menuSectionTitle}>GEÇMİŞ SİPARİŞLERİM</Text>
+            {orderHistory.length > 3 && (
+              <TouchableOpacity>
+                <Text style={styles.viewAllText}>Tümünü Gör</Text>
+              </TouchableOpacity>
+            )}
+          </View>
+
+          {orderHistory.length === 0 ? (
+            <View style={styles.emptyHistory}>
+              <MaterialIcons name="history" size={24} color="#CCC" />
+              <Text style={styles.emptyHistoryText}>Henüz geçmiş siparişiniz yok.</Text>
+            </View>
+          ) : (
+            <View style={styles.historyList}>
+              {orderHistory.slice(0, 3).map((order) => (
+                <TouchableOpacity 
+                  key={order.id} 
+                  style={styles.historyItem}
+                  onPress={() => navigation.navigate('OrderTracking', { orderId: order.id })}
+                >
+                  <View style={styles.historyIconBg}>
+                    <MaterialIcons name="storefront" size={20} color={theme.colors.primary} />
+                  </View>
+                  <View style={styles.historyInfo}>
+                    <Text style={styles.historyRestaurant}>{order.restaurantName}</Text>
+                    <Text style={styles.historyDate}>{formatHistoryDate(order.createdAt)} • {order.items.length} Ürün</Text>
+                  </View>
+                  <View style={styles.historyRight}>
+                    <Text style={styles.historyPrice}>${order.totalPrice.toFixed(2)}</Text>
+                    <Text style={styles.historyStatus}>TESLİM EDİLDİ</Text>
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </View>
+          )}
+        </View>
+
         <View style={styles.menuContainer}>
           <Text style={styles.menuSectionTitle}>ACCOUNT SETTINGS</Text>
           {MENU_ITEMS.map((item) => (
-            <TouchableOpacity key={item.id} style={styles.menuItem} activeOpacity={0.7}>
+            <TouchableOpacity 
+              key={item.id} 
+              style={styles.menuItem} 
+              activeOpacity={0.7}
+              onPress={() => item.screen && navigation.navigate(item.screen)}
+            >
               <View style={styles.menuIconBg}>
                 <MaterialIcons name={item.icon as any} size={22} color={theme.colors.textPrimary} />
               </View>
@@ -102,13 +158,16 @@ export function ProfileScreen({ navigation }: any) {
           <MaterialIcons name="home" size={26} color={theme.colors.textSecondary} />
           <Text style={styles.navText}>HOME</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <MaterialIcons name="search" size={26} color={theme.colors.textSecondary} />
-          <Text style={styles.navText}>SEARCH</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('OrderTracking')}>
-          <MaterialIcons name="receipt-long" size={26} color={theme.colors.textSecondary} />
-          <Text style={styles.navText}>ORDERS</Text>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Checkout')}>
+          <View>
+            <MaterialIcons name="shopping-cart" size={26} color={theme.colors.textSecondary} />
+            {itemCount > 0 && (
+              <View style={styles.navBadge}>
+                <Text style={styles.navBadgeText}>{itemCount}</Text>
+              </View>
+            )}
+          </View>
+          <Text style={styles.navText}>CART</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItemActive}>
           <MaterialIcons name="person" size={26} color={theme.colors.primary} />
@@ -340,5 +399,102 @@ const styles = StyleSheet.create({
     color: theme.colors.primary,
     marginTop: 4,
     letterSpacing: 0.5,
+  },
+  navBadge: {
+    position: 'absolute',
+    top: -4,
+    right: -8,
+    backgroundColor: theme.colors.error,
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  navBadgeText: {
+    color: '#FFF',
+    fontSize: 9,
+    fontWeight: '800',
+  },
+  historyContainer: {
+    marginBottom: 40,
+  },
+  historyHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  viewAllText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: theme.colors.primary,
+    marginBottom: 24,
+  },
+  historyList: {
+    gap: 12,
+  },
+  historyItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFF',
+    padding: 16,
+    borderRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.05,
+    shadowRadius: 10,
+    elevation: 2,
+  },
+  historyIconBg: {
+    width: 44,
+    height: 44,
+    borderRadius: 14,
+    backgroundColor: '#FFF7ED',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 16,
+  },
+  historyInfo: {
+    flex: 1,
+  },
+  historyRestaurant: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: theme.colors.textPrimary,
+  },
+  historyDate: {
+    fontSize: 12,
+    color: theme.colors.textSecondary,
+    marginTop: 4,
+  },
+  historyRight: {
+    alignItems: 'flex-end',
+  },
+  historyPrice: {
+    fontSize: 15,
+    fontWeight: '800',
+    color: theme.colors.textPrimary,
+  },
+  historyStatus: {
+    fontSize: 10,
+    fontWeight: '800',
+    color: theme.colors.success,
+    marginTop: 4,
+  },
+  emptyHistory: {
+    alignItems: 'center',
+    padding: 24,
+    backgroundColor: '#FFF',
+    borderRadius: 20,
+    borderStyle: 'dashed',
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+  },
+  emptyHistoryText: {
+    fontSize: 13,
+    color: '#999',
+    marginTop: 8,
+    fontWeight: '500',
   },
 });

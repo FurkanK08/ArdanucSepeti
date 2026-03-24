@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity, SafeAr
 import { MaterialIcons } from '@expo/vector-icons';
 import { theme } from '../../constants/theme';
 import { RestaurantCard } from '../../components/customer/RestaurantCard';
+import { useCart } from '../../context/CartContext';
+import { useOrder } from '../../context/OrderContext';
 
 const CATEGORIES = ['All', 'Burger', 'Pizza', 'Kebab', 'Sushi', 'Desserts'];
 
@@ -15,6 +17,7 @@ const RESTAURANTS = [
     rating: '4.8',
     imageUri: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop',
     logoUri: 'https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=150&auto=format&fit=crop',
+    categories: ['Burger'],
   },
   {
     id: '2',
@@ -24,10 +27,42 @@ const RESTAURANTS = [
     rating: '4.5',
     imageUri: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800&auto=format&fit=crop',
     logoUri: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=150&auto=format&fit=crop',
+    categories: ['Pizza'],
+  },
+  {
+    id: '3',
+    title: 'Kyoto Sushi Bar',
+    minOrder: 'Minimum 300 TL',
+    deliveryTime: 'Delivery 50 min',
+    rating: '4.9',
+    imageUri: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=800&auto=format&fit=crop',
+    logoUri: 'https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=150&auto=format&fit=crop',
+    categories: ['Sushi'],
+  },
+  {
+    id: '4',
+    title: 'Kebab Kingdom',
+    minOrder: 'Minimum 180 TL',
+    deliveryTime: 'Delivery 25 min',
+    rating: '4.7',
+    imageUri: 'https://images.unsplash.com/photo-1561651823-34fed022510d?q=80&w=800&auto=format&fit=crop',
+    logoUri: 'https://images.unsplash.com/photo-1623341214825-9f4f963727da?q=80&w=150&auto=format&fit=crop',
+    categories: ['Kebab'],
   },
 ];
 
 export function MarketplaceHomeScreen({ navigation }: any) {
+  const [searchQuery, setSearchQuery] = React.useState('');
+  const [selectedCategory, setSelectedCategory] = React.useState('All');
+  const { itemCount } = useCart();
+  const { activeOrders } = useOrder();
+
+  const filteredRestaurants = RESTAURANTS.filter(rest => {
+    const matchesSearch = rest.title.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory = selectedCategory === 'All' || rest.categories.includes(selectedCategory);
+    return matchesSearch && matchesCategory;
+  });
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="dark-content" />
@@ -59,19 +94,48 @@ export function MarketplaceHomeScreen({ navigation }: any) {
               placeholder="Search for flavors, restaurants..."
               placeholderTextColor={theme.colors.textSecondary}
               cursorColor={theme.colors.primary}
+              value={searchQuery}
+              onChangeText={setSearchQuery}
             />
           </View>
         </View>
 
+        {/* Active Orders Widget */}
+        {activeOrders.length > 0 && (
+          <View style={styles.activeOrdersContainer}>
+            <Text style={styles.activeOrdersTitle}>Aktif Siparişlerim</Text>
+            {activeOrders.map(order => (
+              <TouchableOpacity 
+                key={order.id} 
+                style={styles.activeOrderCard}
+                activeOpacity={0.8}
+                onPress={() => navigation.navigate('OrderTracking', { orderId: order.id })}
+              >
+                <View style={styles.activeOrderLeft}>
+                  <View style={styles.activeOrderIcon}>
+                    <MaterialIcons name="local-shipping" size={20} color={theme.colors.primary} />
+                  </View>
+                  <View>
+                    <Text style={styles.activeOrderRestaurant}>{order.restaurantName}</Text>
+                    <Text style={styles.activeOrderStatus}>Sipariş #{order.id} • {order.status}</Text>
+                  </View>
+                </View>
+                <MaterialIcons name="navigate-next" size={24} color={theme.colors.textSecondary} />
+              </TouchableOpacity>
+            ))}
+          </View>
+        )}
+
         {/* Categories */}
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.categoriesContent}>
           {CATEGORIES.map((cat, index) => {
-            const isActive = index === 0;
+            const isActive = selectedCategory === cat;
             return (
               <TouchableOpacity
                 key={index}
                 style={[styles.categoryChip, isActive && styles.categoryChipActive]}
                 activeOpacity={0.8}
+                onPress={() => setSelectedCategory(cat)}
               >
                 <Text style={[styles.categoryText, isActive && styles.categoryTextActive]}>{cat}</Text>
               </TouchableOpacity>
@@ -87,18 +151,37 @@ export function MarketplaceHomeScreen({ navigation }: any) {
 
         {/* Restaurant Feed */}
         <View style={styles.feedContainer}>
-          {RESTAURANTS.map((rest) => (
-            <RestaurantCard 
-              key={rest.id}
-              title={rest.title}
-              imageUri={rest.imageUri}
-              logoUri={rest.logoUri}
-              minOrder={rest.minOrder}
-              deliveryTime={rest.deliveryTime}
-              rating={rest.rating}
-              onPress={() => navigation.navigate('RestaurantMenu')}
-            />
-          ))}
+          {filteredRestaurants.length > 0 ? (
+            filteredRestaurants.map((rest) => (
+              <RestaurantCard 
+                key={rest.id}
+                title={rest.title}
+                imageUri={rest.imageUri}
+                logoUri={rest.logoUri}
+                minOrder={rest.minOrder}
+                deliveryTime={rest.deliveryTime}
+                rating={rest.rating}
+                onPress={() => navigation.navigate('RestaurantMenu', { 
+                  restaurantId: rest.id,
+                  restaurantName: rest.title 
+                })}
+              />
+            ))
+          ) : (
+            <View style={styles.emptyResults}>
+              <MaterialIcons name="search-off" size={64} color="#CBD5E1" />
+              <Text style={styles.emptyResultsText}>No restaurants found</Text>
+              <TouchableOpacity 
+                style={styles.clearFiltersBtn}
+                onPress={() => {
+                  setSearchQuery('');
+                  setSelectedCategory('All');
+                }}
+              >
+                <Text style={styles.clearFiltersText}>Clear Filters</Text>
+              </TouchableOpacity>
+            </View>
+          )}
         </View>
       </ScrollView>
 
@@ -108,27 +191,22 @@ export function MarketplaceHomeScreen({ navigation }: any) {
           <MaterialIcons name="home" size={24} color="#C2410C" />
           <Text style={styles.navTextActive}>HOME</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <MaterialIcons name="search" size={24} color={theme.colors.textSecondary} />
-          <Text style={styles.navText}>SEARCH</Text>
-        </TouchableOpacity>
         <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Checkout')}>
-          <MaterialIcons name="receipt-long" size={24} color={theme.colors.textSecondary} />
-          <Text style={styles.navText}>ORDERS</Text>
+          <View>
+            <MaterialIcons name="shopping-cart" size={24} color={theme.colors.textSecondary} />
+            {itemCount > 0 && (
+              <View style={styles.navBadge}>
+                <Text style={styles.navBadgeText}>{itemCount}</Text>
+              </View>
+            )}
+          </View>
+          <Text style={styles.navText}>CART</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Profile')}>
           <MaterialIcons name="person" size={24} color={theme.colors.textSecondary} />
           <Text style={styles.navText}>PROFILE</Text>
         </TouchableOpacity>
       </View>
-
-      {/* FAB Basket */}
-      <TouchableOpacity style={styles.fab} activeOpacity={0.9} onPress={() => navigation.navigate('Checkout')}>
-        <MaterialIcons name="shopping-basket" size={24} color="#FFF" />
-        <View style={styles.badge}>
-          <Text style={styles.badgeText}>3</Text>
-        </View>
-      </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -304,40 +382,88 @@ const styles = StyleSheet.create({
     color: '#C2410C',
     letterSpacing: 1,
   },
-  fab: {
+  navBadge: {
     position: 'absolute',
-    bottom: 110,
-    right: 24,
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    backgroundColor: theme.colors.primary,
+    top: -4,
+    right: -8,
+    backgroundColor: theme.colors.error,
+    width: 16,
+    height: 16,
+    borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: theme.colors.primary,
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.3,
-    shadowRadius: 16,
-    elevation: 10,
-    borderWidth: 4,
-    borderColor: '#FFF',
   },
-  badge: {
-    position: 'absolute',
-    top: -2,
-    right: -2,
-    backgroundColor: '#191C1E', 
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 2,
-    borderColor: '#FFF',
-  },
-  badgeText: {
+  navBadgeText: {
     color: '#FFF',
-    fontSize: 10,
-    fontWeight: '900',
-  }
+    fontSize: 9,
+    fontWeight: '800',
+  },
+  activeOrdersContainer: {
+    paddingHorizontal: 24,
+    marginTop: 24,
+  },
+  activeOrdersTitle: {
+    fontSize: 18,
+    fontWeight: '800',
+    color: theme.colors.textPrimary,
+    marginBottom: 12,
+  },
+  activeOrderCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#FFF7ED', // very light orange
+    padding: 16,
+    borderRadius: 16,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: 'rgba(234, 88, 12, 0.1)',
+  },
+  activeOrderLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  activeOrderIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: 'rgba(234, 88, 12, 0.1)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  activeOrderRestaurant: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: theme.colors.textPrimary,
+    marginBottom: 2,
+  },
+  activeOrderStatus: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: theme.colors.primary,
+  },
+  emptyResults: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 64,
+  },
+  emptyResultsText: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: theme.colors.textSecondary,
+    marginTop: 16,
+  },
+  clearFiltersBtn: {
+    marginTop: 16,
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    borderRadius: 12,
+    backgroundColor: '#F2F4F6',
+  },
+  clearFiltersText: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: theme.colors.primary,
+  },
 });
