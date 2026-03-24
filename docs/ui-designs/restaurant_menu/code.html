@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#00855b",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#6ffbbe",
+              "primary-fixed-dim": "#ffb59e",
+              "surface-container": "#eceef0",
+              "tertiary-fixed-dim": "#4edea3",
+              "secondary-fixed-dim": "#ffb59e",
+              "on-surface": "#191c1e",
+              "on-tertiary-fixed-variant": "#005236",
+              "on-surface-variant": "#5c4037",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed-variant": "#832602",
+              "error": "#ba1a1a",
+              "surface-container-low": "#f2f4f6",
+              "inverse-surface": "#2d3133",
+              "on-primary-container": "#fffbff",
+              "outline-variant": "#e6beb2",
+              "error-container": "#ffdad6",
+              "surface-variant": "#e0e3e5",
+              "inverse-primary": "#ffb59e",
+              "background": "#f8f9fb",
+              "surface-container-highest": "#e0e3e5",
+              "surface-dim": "#d8dadc",
+              "on-secondary": "#ffffff",
+              "outline": "#916f65",
+              "primary-container": "#d34000",
+              "surface-tint": "#ad3300",
+              "on-primary-fixed": "#3a0b00",
+              "primary": "#a93100",
+              "surface": "#f8f9fb",
+              "inverse-on-surface": "#eff1f3",
+              "on-error-container": "#93000a",
+              "secondary": "#a43d19",
+              "on-secondary-container": "#6d1d00",
+              "surface-bright": "#f8f9fb",
+              "on-secondary-fixed": "#3a0b00",
+              "tertiary": "#006947",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-container": "#f5fff6",
+              "on-background": "#191c1e",
+              "secondary-fixed": "#ffdbd0",
+              "primary-fixed": "#ffdbd0",
+              "on-primary-fixed-variant": "#842500",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#e6e8ea",
+              "secondary-container": "#fd7f56",
+              "on-tertiary-fixed": "#002113"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+        }
+        .orange-gradient {
+            background: linear-gradient(135deg, #a93100 0%, #d34000 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface min-h-screen pb-32">
+<!-- Top Navigation (Contextual Suppression of Full Shell for Back Action) -->
+<nav class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 py-4 glass-nav">
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-container-lowest text-on-surface shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-container-lowest text-on-surface shadow-sm">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-container-lowest text-on-surface shadow-sm">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative h-[353px] w-full overflow-hidden">
+<img alt="The Culinary Curator Signature Venue" class="w-full h-full object-cover" data-alt="high-end restaurant interior with warm ambient lighting, velvet seating, and elegant table settings in a modern architectural space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgW5Fe0fVK2s4eglBiwvKB9_wVU6L7HDnMKWouu5mjfeIFltS4hdkNcsUESk8-FoJerI0pTZMdrwZIcZeDHZgQ9CR43GmkwobPoAwrgdptUg1ABHRxQ58MyyQxMA44rmbXy2BLtXxnL_qtj8lIekBdQh2L6Nvo8jE2afkUStDSNxJkfOBhh0r32_ZzlGCDHtXE1VXBNrzDiZmkIwpLQnazS1GuxW0WBNEep_90fY_oumoijlxaQOyVmfKQZsT0i-3IWNl5kt6omfE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 pb-12">
+<div class="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-md text-white px-3 py-1 rounded-full w-fit mb-3">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[12px] font-bold tracking-wider">4.9 TOP RATED</span>
+</div>
+<h1 class="text-white text-[32px] font-black tracking-tighter leading-none mb-2">The Culinary Curator</h1>
+<div class="flex items-center gap-4 text-white/90 text-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 25-35 min</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">distance</span> 1.2 miles</span>
+</div>
+</div>
+</header>
+<!-- Menu Section -->
+<main class="relative -mt-6 bg-surface rounded-t-[24px] px-6 pt-8">
+<!-- Search & Filter Bay -->
+<div class="bg-surface-container-low rounded-[20px] p-2 flex items-center gap-2 mb-10">
+<div class="flex-1 flex items-center gap-3 px-4 py-3 bg-surface-container-lowest rounded-xl">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="bg-transparent border-none p-0 focus:ring-0 text-sm w-full placeholder:text-on-surface-variant/50" placeholder="Search menu items..." type="text"/>
+</div>
+<button class="w-12 h-12 flex items-center justify-center bg-primary text-white rounded-xl">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+<!-- Category Title -->
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-[24px] font-black tracking-tight text-on-surface">Signature Dishes</h2>
+<span class="text-primary text-sm font-bold tracking-widest uppercase">View All</span>
+</div>
+<!-- Menu List -->
+<div class="space-y-6">
+<!-- Item 1 -->
+<div class="group relative bg-surface-container-lowest rounded-[20px] p-4 flex gap-4 transition-all hover:scale-[1.02] border border-transparent hover:border-outline-variant/20">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="text-[18px] font-bold text-on-surface leading-tight mb-1">Truffle Infused Tagliatelle</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2 leading-relaxed">Handmade pasta tossed in cream of white truffle, aged parmesan, and wild forest mushrooms.</p>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-[18px] font-black text-on-surface">$24.00</span>
+</div>
+</div>
+<div class="relative w-28 h-28 shrink-0">
+<img alt="Truffle Tagliatelle" class="w-full h-full object-cover rounded-xl" data-alt="close-up of gourmet pasta dish with shaved truffles and creamy sauce on a dark artisan plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMrq9tcvw6N9C4YlTqxAE5HlMUAjed0-apgXYaRMFSg_IXENtx3V8zU05rLgoDD-RMVQqGYCQt_kDc1IRPDkgK4MgwN_4x5dgbjKTLX3XKP6jbfH6mKJJvpygJArOeUGrsE8f6Rj1uyuZlZzzLBntJjaLomG7npe9A_Ggd_XP6nT99c6fEljMO2CBzmZZ9gJfmyU0J4LOkX_rBLlg3IvHJwX3F5vdeLoVQ325t3P6GjyZacZQSrTxgy5XdLr6T-b2USZrehzgp1Rk"/>
+<button class="absolute -bottom-2 -right-2 w-10 h-10 orange-gradient text-white rounded-xl flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group relative bg-surface-container-lowest rounded-[20px] p-4 flex gap-4 transition-all hover:scale-[1.02] border border-transparent hover:border-outline-variant/20">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="text-[18px] font-bold text-on-surface leading-tight mb-1">Honey Glazed Miso Salmon</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2 leading-relaxed">Pan-seared Atlantic salmon with a sweet miso glaze, served over ginger-infused bok choy.</p>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-[18px] font-black text-on-surface">$28.50</span>
+</div>
+</div>
+<div class="relative w-28 h-28 shrink-0">
+<img alt="Miso Salmon" class="w-full h-full object-cover rounded-xl" data-alt="perfectly seared salmon fillet with a glossy glaze and green vegetables on a minimalist white plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADwIzcDAMeFOZ37y35ENE_n2mH6WDE76-sqxPPOiypKILu7zMysGaZxPVBgany9P9NeFX3veHBGAUdp1eGePmRoLOdzItN-fdJecPgeRon-Zz5422wDZTtlvFrjYvkM4-JYXCsQBBKNQ10pkBQ-adZI4oyAymCf6575TMzriWJEcHEYJy30_2L3Ijyzo_Ao8mDLYOBoGUPU7IEixRrYdF-Eq-kdwkrDJPMfy7epX9h_5X0z2ULxIUcDgy_H63ry7ZMceqUpkmU38o"/>
+<button class="absolute -bottom-2 -right-2 w-10 h-10 orange-gradient text-white rounded-xl flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="group relative bg-surface-container-lowest rounded-[20px] p-4 flex gap-4 transition-all hover:scale-[1.02] border border-transparent hover:border-outline-variant/20">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="text-[18px] font-bold text-on-surface leading-tight mb-1">Charred Wagyu Slider Duo</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2 leading-relaxed">Two mini wagyu beef patties, caramelized onions, gruyère cheese, and truffle aioli on brioche.</p>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-[18px] font-black text-on-surface">$19.00</span>
+</div>
+</div>
+<div class="relative w-28 h-28 shrink-0">
+<img alt="Wagyu Sliders" class="w-full h-full object-cover rounded-xl" data-alt="two gourmet mini burgers with melted cheese and crispy onions on a dark wooden board" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWI5bsGyzODxdMuwTT9CqCGiyGpryTq9ieDAEnXd0pNifMcvj4cDsMuiwayadYOnm5sfckqF1L9nrax5vw-B6eK1uGfhhR3bZITx18yy2j42G2otICYH4ykCsYp0RztiH2shY_aOwTp0kysrrEem1Q_cKas6MkHEbo4ooYDww1EbdKPw2JVD1lne_PbWEmc8mJ9NFmPtWcu0GGRdexe5RAZ8TYgRrs2HDeoTWKWUizi2i5XRbGLx8OQmAZmk-AFuB4gBWIFm7Z8zY"/>
+<button class="absolute -bottom-2 -right-2 w-10 h-10 orange-gradient text-white rounded-xl flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="group relative bg-surface-container-lowest rounded-[20px] p-4 flex gap-4 transition-all hover:scale-[1.02] border border-transparent hover:border-outline-variant/20">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="text-[18px] font-bold text-on-surface leading-tight mb-1">Heirloom Tomato Carpaccio</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2 leading-relaxed">Thinly sliced heirloom tomatoes, balsamic pearls, fresh basil, and extra virgin olive oil.</p>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-[18px] font-black text-on-surface">$16.00</span>
+</div>
+</div>
+<div class="relative w-28 h-28 shrink-0">
+<img alt="Tomato Carpaccio" class="w-full h-full object-cover rounded-xl" data-alt="vibrant sliced tomatoes of different colors arranged beautifully with herbs and oil drizzle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATlR1LIsZLKFh4xFutsnRoiCMkmKPEOBgBQiEzFuEUvnTcGLXGblUbCPPP0KpZjEa3jZkoWjUHPshXhIDjEjgmxSrwEYBVstilUPN4x33xxOYyMgWCGHDYa8WydHgUAyEo0IM4ZyJ784AErd4GtLag5CBg8NEgelWmGMDjIv_2phjZqT9l1yIfxEY9MuXj7uNkqhGfaAw07CbyTHN-dXYzSvWBByKcEXNjbnH9cE3_iI7h-KIyVwiMOlcQuLzruzOypxqUUb6Q1E4"/>
+<button class="absolute -bottom-2 -right-2 w-10 h-10 orange-gradient text-white rounded-xl flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Spacing for FAB -->
+<div class="h-32"></div>
+</main>
+<!-- Floating Cart Summary (Primary CTA) -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 w-[90%] max-w-md z-50">
+<button class="w-full orange-gradient p-5 rounded-2xl flex items-center justify-between shadow-[0_12px_32px_rgba(169,49,0,0.3)] active:scale-95 transition-transform">
+<div class="flex items-center gap-4">
+<div class="bg-white/20 px-3 py-1 rounded-lg text-white font-bold text-sm">3 ITEMS</div>
+<div class="text-white font-black text-lg tracking-tight">View Basket</div>
+</div>
+<div class="text-white font-black text-lg">$68.50</div>
+</button>
+</div>
+<!-- Hidden Bottom Nav (Suppressed for detail view per 'Destination Rule' and 'UX Goal') -->
+<!-- The user is in a focused menu journey, so we suppress global nav to prioritize selection -->
+</body></html>

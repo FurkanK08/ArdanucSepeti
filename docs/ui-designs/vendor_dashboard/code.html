@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kitchen Dashboard | The Culinary Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#00855b",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#6ffbbe",
+              "primary-fixed-dim": "#ffb59e",
+              "surface-container": "#eceef0",
+              "tertiary-fixed-dim": "#4edea3",
+              "secondary-fixed-dim": "#ffb59e",
+              "on-surface": "#191c1e",
+              "on-tertiary-fixed-variant": "#005236",
+              "on-surface-variant": "#5c4037",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed-variant": "#832602",
+              "error": "#ba1a1a",
+              "surface-container-low": "#f2f4f6",
+              "inverse-surface": "#2d3133",
+              "on-primary-container": "#fffbff",
+              "outline-variant": "#e6beb2",
+              "error-container": "#ffdad6",
+              "surface-variant": "#e0e3e5",
+              "inverse-primary": "#ffb59e",
+              "background": "#f8f9fb",
+              "surface-container-highest": "#e0e3e5",
+              "surface-dim": "#d8dadc",
+              "on-secondary": "#ffffff",
+              "outline": "#916f65",
+              "primary-container": "#d34000",
+              "surface-tint": "#ad3300",
+              "on-primary-fixed": "#3a0b00",
+              "primary": "#a93100",
+              "surface": "#f8f9fb",
+              "inverse-on-surface": "#eff1f3",
+              "on-error-container": "#93000a",
+              "secondary": "#a43d19",
+              "on-secondary-container": "#6d1d00",
+              "surface-bright": "#f8f9fb",
+              "on-secondary-fixed": "#3a0b00",
+              "tertiary": "#006947",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-container": "#f5fff6",
+              "on-background": "#191c1e",
+              "secondary-fixed": "#ffdbd0",
+              "primary-fixed": "#ffdbd0",
+              "on-primary-fixed-variant": "#842500",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#e6e8ea",
+              "secondary-container": "#fd7f56",
+              "on-tertiary-fixed": "#002113"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar Mapping -->
+<header class="sticky top-0 w-full flex justify-between items-center px-6 py-4 max-w-7xl mx-auto bg-white/85 backdrop-blur-xl z-50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-orange-600" data-icon="location_on">location_on</span>
+<h1 class="text-xl font-black text-gray-900 tracking-tighter">The Culinary Curator</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-6 items-center mr-6">
+<span class="font-['Inter'] font-semibold text-sm bg-orange-600 text-white rounded-xl px-4 py-2">Dashboard</span>
+<span class="font-['Inter'] font-semibold text-sm text-gray-600 hover:opacity-80 transition-opacity">Inventory</span>
+<span class="font-['Inter'] font-semibold text-sm text-gray-600 hover:opacity-80 transition-opacity">Settings</span>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high">
+<img alt="Vendor Profile" class="w-full h-full object-cover" data-alt="professional chef portrait in clean white uniform smiling in a high-end commercial kitchen setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUf-lixaGoDBeJd18zEaVVq74ZxNLrtkEQz2RubJyczi3ThunkpWesPOeatCdan60QikAuJ4clqTTAEB3PxQ6HxzDp-U_z7jD9k6gkYRctC5pe5XBjdcWgmuqcXeEzb5QOqhez0seiHQD_nfJsW3pBuDkTlB6RexxfWUsDWrr2LEkt6HjWxthr8SU4eEWugwvHomCl6gcKgwjqPsfnq0FYpH3iCDyMNmYZEA3NstqT4a5PjpEn0K4nBH4GwSj2GoYOkwuH5J-9_q4"/>
+</div>
+</div>
+</header>
+<main class="max-w-md mx-auto px-4 pt-6 space-y-8">
+<!-- Dashboard Header Status -->
+<div class="flex justify-between items-end px-2">
+<div>
+<p class="text-label uppercase tracking-[0.05em] text-gray-500 text-[10px] font-bold">Kitchen Status</p>
+<h2 class="text-2xl font-black text-on-surface">Live Orders</h2>
+</div>
+<div class="flex items-center gap-2 bg-tertiary/10 text-tertiary px-3 py-1 rounded-full">
+<span class="w-2 h-2 bg-tertiary rounded-full"></span>
+<span class="text-xs font-bold">ONLINE</span>
+</div>
+</div>
+<!-- Order Feed -->
+<div class="space-y-6">
+<!-- Active Incoming Order Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl shadow-[0_12px_32px_rgba(169,49,0,0.06)] overflow-hidden flex flex-col min-h-[500px] border border-outline-variant/10">
+<div class="p-6 flex-grow">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-5xl font-black tracking-tighter text-on-surface">Order #A491</h3>
+<span class="bg-primary-container text-white px-3 py-1 rounded-lg text-xs font-black">NEW</span>
+</div>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-gray-400 text-sm" data-icon="schedule">schedule</span>
+<span class="text-sm font-bold text-gray-500">Received 2m ago</span>
+</div>
+<!-- Food Items List -->
+<div class="space-y-4 mb-8">
+<div class="flex items-start gap-4">
+<span class="text-xl font-black text-primary">2×</span>
+<div>
+<p class="text-lg font-bold text-on-surface">Signature Wagyu Sliders</p>
+<p class="text-sm text-gray-500">Medium Rare, Extra Truffle Aioli</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="text-xl font-black text-primary">1×</span>
+<div>
+<p class="text-lg font-bold text-on-surface">Truffle Parmesan Fries</p>
+<p class="text-sm text-gray-500">Large, Side of Spicy Mayo</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="text-xl font-black text-primary">1×</span>
+<div>
+<p class="text-lg font-bold text-on-surface">Wild Berry Lemonade</p>
+<p class="text-sm text-gray-500">Less Ice</p>
+</div>
+</div>
+</div>
+<!-- Highlighted Customer Note -->
+<div class="bg-yellow-100 border-2 border-yellow-200 p-4 rounded-xl flex gap-3 items-start">
+<span class="material-symbols-outlined text-yellow-700 shrink-0" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div>
+<p class="text-[10px] font-black uppercase tracking-wider text-yellow-800">Customer Note</p>
+<p class="text-lg font-extrabold text-yellow-900 leading-tight">SEVERE ALLERGY: NO ONIONS OR SCALLIONS IN ANY ITEM.</p>
+</div>
+</div>
+</div>
+<!-- Action Buttons Glued to Bottom -->
+<div class="flex w-full h-20">
+<button class="flex-1 bg-error hover:bg-error/90 text-white font-black text-sm uppercase tracking-widest transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+                        DECLINE
+                    </button>
+<button class="flex-[2] bg-tertiary hover:bg-tertiary/90 text-white font-black text-sm uppercase tracking-widest transition-colors flex items-center justify-center gap-2 border-l border-white/10">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+                        ACCEPT &amp; PREPARE
+                    </button>
+</div>
+</article>
+<!-- Active Incoming Order Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl shadow-[0_12px_32px_rgba(169,49,0,0.06)] overflow-hidden flex flex-col border border-outline-variant/10 opacity-90">
+<div class="p-6 flex-grow">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-5xl font-black tracking-tighter text-on-surface">Order #B212</h3>
+<span class="bg-gray-200 text-gray-600 px-3 py-1 rounded-lg text-xs font-black">WAITING</span>
+</div>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-gray-400 text-sm" data-icon="schedule">schedule</span>
+<span class="text-sm font-bold text-gray-500">Received 5m ago</span>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex items-start gap-4">
+<span class="text-xl font-black text-primary">1×</span>
+<div>
+<p class="text-lg font-bold text-on-surface">Garden Harvest Bowl</p>
+<p class="text-sm text-gray-500">Quinoa Base, Tahini Dressing</p>
+</div>
+</div>
+</div>
+<div class="bg-yellow-100 border-2 border-yellow-200 p-4 rounded-xl flex gap-3 items-start">
+<span class="material-symbols-outlined text-yellow-700 shrink-0" data-icon="info" style="font-variation-settings: 'FILL' 1;">info</span>
+<div>
+<p class="text-[10px] font-black uppercase tracking-wider text-yellow-800">Customer Note</p>
+<p class="text-lg font-extrabold text-yellow-900 leading-tight">Please leave at the door and ring the bell.</p>
+</div>
+</div>
+</div>
+<div class="flex w-full h-20">
+<button class="flex-1 bg-error/80 text-white font-black text-sm uppercase tracking-widest flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+                        DECLINE
+                    </button>
+<button class="flex-[2] bg-tertiary/80 text-white font-black text-sm uppercase tracking-widest flex items-center justify-center gap-2 border-l border-white/10">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+                        ACCEPT &amp; PREPARE
+                    </button>
+</div>
+</article>
+</div>
+</main>
+<!-- BottomNavBar Mapping -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-6 pb-6 pt-2 bg-white/85 dark:bg-gray-900/85 backdrop-blur-xl rounded-t-2xl z-50 shadow-[0_-12px_32px_rgba(169,49,0,0.06)]">
+<a class="flex flex-col items-center justify-center bg-orange-50 text-orange-700 rounded-2xl px-4 py-2 transition-all scale-105" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-['Inter'] font-medium text-[10px] tracking-[0.05em] uppercase mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-500 px-4 py-2 hover:bg-gray-100 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-['Inter'] font-medium text-[10px] tracking-[0.05em] uppercase mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-500 px-4 py-2 hover:bg-gray-100 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-['Inter'] font-medium text-[10px] tracking-[0.05em] uppercase mt-1">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-500 px-4 py-2 hover:bg-gray-100 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person_2">person_2</span>
+<span class="font-['Inter'] font-medium text-[10px] tracking-[0.05em] uppercase mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

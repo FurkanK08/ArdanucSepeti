@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Tracking | The Culinary Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#00855b",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#6ffbbe",
+              "primary-fixed-dim": "#ffb59e",
+              "surface-container": "#eceef0",
+              "tertiary-fixed-dim": "#4edea3",
+              "secondary-fixed-dim": "#ffb59e",
+              "on-surface": "#191c1e",
+              "on-tertiary-fixed-variant": "#005236",
+              "on-surface-variant": "#5c4037",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed-variant": "#832602",
+              "error": "#ba1a1a",
+              "surface-container-low": "#f2f4f6",
+              "inverse-surface": "#2d3133",
+              "on-primary-container": "#fffbff",
+              "outline-variant": "#e6beb2",
+              "error-container": "#ffdad6",
+              "surface-variant": "#e0e3e5",
+              "inverse-primary": "#ffb59e",
+              "background": "#f8f9fb",
+              "surface-container-highest": "#e0e3e5",
+              "surface-dim": "#d8dadc",
+              "on-secondary": "#ffffff",
+              "outline": "#916f65",
+              "primary-container": "#d34000",
+              "surface-tint": "#ad3300",
+              "on-primary-fixed": "#3a0b00",
+              "primary": "#a93100",
+              "surface": "#f8f9fb",
+              "inverse-on-surface": "#eff1f3",
+              "on-error-container": "#93000a",
+              "secondary": "#a43d19",
+              "on-secondary-container": "#6d1d00",
+              "surface-bright": "#f8f9fb",
+              "on-secondary-fixed": "#3a0b00",
+              "tertiary": "#006947",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-container": "#f5fff6",
+              "on-background": "#191c1e",
+              "secondary-fixed": "#ffdbd0",
+              "primary-fixed": "#ffdbd0",
+              "on-primary-fixed-variant": "#842500",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#e6e8ea",
+              "secondary-container": "#fd7f56",
+              "on-tertiary-fixed": "#002113"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full flex justify-between items-center px-6 py-4 max-w-7xl mx-auto bg-white/85 dark:bg-gray-900/85 backdrop-blur-xl z-50 transition-opacity">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-orange-600 dark:text-orange-500">location_on</span>
+<h1 class="text-xl font-black text-gray-900 dark:text-gray-50 tracking-tighter">The Culinary Curator</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-on-surface">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-high">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="professional headshot of a young male user with a friendly expression in soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkLCXCgY0zty6mq8_IlrT5lV10ZGY2gElk5_HkFoYL1RAql8yTR3P0uWzDZeAnNwEa_G8r4FD85QqIcWk_OMfFH_MBog23tzkDuGESFSxHqMQrjSeZqhAUZNHt6gkvSHAOmMpTFCdXyEHprSh7zBgI13xpwKHPvlJ5vSDLIZOADPbCkKfumxlwSVdbvGmsXmf3K9lvlX_9KFpW1yZvqZdP_R1Wx-DIbv6ZbboDK-UOc3-b9oGYuqvD8xegbJ0yYxC5qACpxZwsp5o"/>
+</div>
+</div>
+</header>
+<main class="px-6 pt-4 max-w-md mx-auto">
+<!-- Active Order Header -->
+<div class="mb-6">
+<p class="font-['Inter'] font-medium text-[10px] tracking-[0.05em] uppercase text-gray-500 mb-1">Active Order</p>
+<h2 class="text-3xl font-extrabold tracking-tight text-on-surface">Track Status</h2>
+</div>
+<!-- Highlighted Active Order Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_-12px_32px_rgba(169,49,0,0.06)] p-6 mb-10 overflow-hidden relative">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+<div class="flex justify-between items-start mb-8 relative z-10">
+<div>
+<h3 class="text-xl font-bold text-on-surface">L'Artisan Brasserie</h3>
+<p class="text-body-md text-on-surface-variant">Order #CUR-8829</p>
+</div>
+<div class="bg-tertiary/10 text-tertiary px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+                    PREPARING
+                </div>
+</div>
+<!-- Vertical Stepper -->
+<div class="space-y-0 relative">
+<!-- Line -->
+<div class="absolute left-[11px] top-2 bottom-2 w-[2px] bg-surface-container-high"></div>
+<div class="absolute left-[11px] top-2 h-[33.3%] w-[2px] bg-tertiary-container"></div>
+<!-- Step 1: Waiting Approval -->
+<div class="relative flex items-start gap-4 pb-10">
+<div class="z-10 w-6 h-6 rounded-full bg-tertiary-container flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xs">check</span>
+</div>
+<div>
+<p class="font-bold text-sm text-on-surface">Waiting Approval</p>
+<p class="text-xs text-on-surface-variant">Confirmed at 12:45 PM</p>
+</div>
+</div>
+<!-- Step 2: Preparing (HIGHLIGHTED) -->
+<div class="relative flex items-start gap-4 pb-10">
+<div class="z-10 w-6 h-6 rounded-full bg-tertiary-container flex items-center justify-center text-white ring-4 ring-tertiary-container/20">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+</div>
+<div>
+<p class="font-bold text-sm text-tertiary">Preparing</p>
+<p class="text-xs text-on-surface-variant font-medium">The chef is crafting your meal</p>
+</div>
+</div>
+<!-- Step 3: Courier On Way -->
+<div class="relative flex items-start gap-4 pb-10">
+<div class="z-10 w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center text-gray-400">
+<span class="material-symbols-outlined text-xs">delivery_dining</span>
+</div>
+<div>
+<p class="font-bold text-sm text-gray-400">Courier On Way</p>
+<p class="text-xs text-gray-400">Awaiting pick-up</p>
+</div>
+</div>
+<!-- Step 4: Delivered -->
+<div class="relative flex items-start gap-4">
+<div class="z-10 w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center text-gray-400">
+<span class="material-symbols-outlined text-xs">home</span>
+</div>
+<div>
+<p class="font-bold text-sm text-gray-400">Delivered</p>
+<p class="text-xs text-gray-400">Est. 1:20 PM</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent History Section -->
+<section class="mb-8">
+<div class="flex justify-between items-end mb-4">
+<h3 class="text-lg font-bold text-on-surface tracking-tight">Recent History</h3>
+<button class="text-xs font-semibold text-primary">View All</button>
+</div>
+<div class="space-y-2">
+<!-- History Item 1 -->
+<div class="bg-surface-container-low rounded-xl p-4 flex items-center justify-between group hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Pizza" class="w-full h-full object-cover" data-alt="overhead shot of a gourmet thin crust pizza with fresh basil and mozzarella" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5JHxAwQl22cczkauqvEGIP719rVEek0_WNGWHRxjx5dQrnpL4jHZINATytFcTuqma5F4lTC_sfkJxFIlUPK_DEgzM1D0eXJc8-LAZJDLz7uVlngpnzc46ffAq_G3V8Cgdyfiih1rfpkEPaJYl-O7eF-zODy6Y8viQIe1CtjqXw-ljYC1X6q-K6ttuvpRKr4cwkPJeUEaIFbJl2VP1reON6oN3IMhoptNTdRjEh7DkweEn6UIMP5hOkssbKmnXqYX7gqxxtmpYCcE"/>
+</div>
+<div>
+<p class="font-semibold text-sm text-on-surface">Napoli Pizzeria</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider font-medium">Oct 12, 2023</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-sm text-on-surface">$32.40</p>
+<p class="text-[10px] text-tertiary font-bold">DELIVERED</p>
+</div>
+</div>
+<!-- History Item 2 -->
+<div class="bg-surface-container-low rounded-xl p-4 flex items-center justify-between group hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Sushi" class="w-full h-full object-cover" data-alt="colorful health bowl with avocado, salmon, and fresh vegetables on a white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAkSfiSYkt45zY9q6TAwV-P65Uq0EOmF750gnKkZNvfxGMTeCfIEtu3FBhmoBhrpwRAbKrp6EIvfObtsFsXtx-l8o2m-soU0x4SffMMlH1HS1qUgsKFVadYvkfw4d9m5yGvxBhhE1OYB4CcnZlxt3yCE8XU-d7E6ddsrYK9DaAeGFSvLnUD7RiPL76kQt3RJJS2GempMa45xqVecPo4Vv5mYN0Q5BhRiWu_a42AiE38XNzmSWIFWQX3_KayjgF3ILRXaWYv6RDc_k"/>
+</div>
+<div>
+<p class="font-semibold text-sm text-on-surface">Sakura Sushi</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider font-medium">Oct 08, 2023</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-sm text-on-surface">$45.12</p>
+<p class="text-[10px] text-tertiary font-bold">DELIVERED</p>
+</div>
+</div>
+<!-- History Item 3 -->
+<div class="bg-surface-container-low rounded-xl p-4 flex items-center justify-between group hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Burger" class="w-full h-full object-cover" data-alt="juicy gourmet beef burger with melting cheese and artisan bun" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoqKbR99zQ5-T3Oc_j7GYKAptnQ-bVcLVYI4ISpQRrVqH6IwVeVVj5Dx0O-3Y0GdiItgImeqS48caPnnTBEAiuFIz9hZRH1ZDVL3lNBS6_x5LZWzdarq6jlkDs_S3QFmGJUW_Gwf124Y9o_qsTNEFPT2a2O98qrJKpAERzpKJsoJoo-iboIY-FsdS7Ain3uIrWga_MGx03qjRrE0HhB_EzgSL71Y4vSWar_1Fq7HA2aXcQfqCSkhcIWecwtkvhOeK3peM86sW4HU4"/>
+</div>
+<div>
+<p class="font-semibold text-sm text-on-surface">Urban Grill</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider font-medium">Oct 03, 2023</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-sm text-on-surface">$19.95</p>
+<p class="text-[10px] text-tertiary font-bold">DELIVERED</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-6 pb-6 pt-2 bg-white/85 dark:bg-gray-900/85 backdrop-blur-xl rounded-t-2xl z-50 shadow-[0_-12px_32px_rgba(169,49,0,0.06)] tonal-shift bg-gray-50/50">
+<a class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-['Inter'] font-medium text-[10px] tracking-[0.05em] uppercase">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">search</span>
+<span class="font-['Inter'] font-medium text-[10px] tracking-[0.05em] uppercase">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-400 rounded-2xl px-4 py-2 transition-all scale-105" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="font-['Inter'] font-medium text-[10px] tracking-[0.05em] uppercase">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">person_2</span>
+<span class="font-['Inter'] font-medium text-[10px] tracking-[0.05em] uppercase">Profile</span>
+</a>
+</nav>
+</body></html>

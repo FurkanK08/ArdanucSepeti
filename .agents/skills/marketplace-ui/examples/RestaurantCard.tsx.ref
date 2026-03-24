@@ -1,0 +1,160 @@
+import React from 'react';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+
+/**
+ * RestaurantCard - Ana sayfadaki Restoran Kartı
+ * Kaynak: docs/ui-designs/home_feed/code.html
+ * - Resim üzerinde gradient overlay
+ * - Sol altta circular logo badge
+ * - Meta bilgiler: Küçük pill'ler (Min Sipariş, Teslimat Süresi)
+ * - Sağda yıldız/puan badge (turuncu arka plan)
+ */
+export const RestaurantCard = ({
+  name,
+  imageUrl,
+  logoUrl,
+  rating,
+  minOrder,
+  deliveryTime,
+  onPress,
+}: {
+  name: string;
+  imageUrl: string;
+  logoUrl: string;
+  rating: number;
+  minOrder: number;
+  deliveryTime: string;
+  onPress: () => void;
+}) => {
+  return (
+    <TouchableOpacity style={styles.card} onPress={onPress} activeOpacity={0.9}>
+      {/* Cover Image with Gradient */}
+      <View style={styles.imageContainer}>
+        <Image source={{ uri: imageUrl }} style={styles.coverImage} />
+        {/* Gradient Overlay */}
+        <View style={styles.gradientOverlay} />
+        {/* Circular Logo Badge */}
+        <View style={styles.logoBadge}>
+          <Image source={{ uri: logoUrl }} style={styles.logoImage} />
+        </View>
+      </View>
+
+      {/* Info Row */}
+      <View style={styles.infoRow}>
+        <View style={styles.leftInfo}>
+          <Text style={styles.restaurantName}>{name}</Text>
+          <View style={styles.pillRow}>
+            <View style={styles.pill}>
+              <Text style={styles.pillText}>Min {minOrder} TL</Text>
+            </View>
+            <View style={styles.pill}>
+              <Text style={styles.pillText}>{deliveryTime}</Text>
+            </View>
+          </View>
+        </View>
+        {/* Star Badge */}
+        <View style={styles.starBadge}>
+          <Text style={styles.starIcon}>⭐</Text>
+          <Text style={styles.starText}>{rating}</Text>
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+};
+
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: '#ffffff',
+    borderRadius: 16,
+    overflow: 'hidden',
+    marginBottom: 24,
+    shadowColor: '#a93100',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 8,
+    elevation: 2,
+  },
+  imageContainer: {
+    width: '100%',
+    aspectRatio: 4 / 3,
+    position: 'relative',
+  },
+  coverImage: {
+    width: '100%',
+    height: '100%',
+  },
+  gradientOverlay: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: '50%',
+    backgroundColor: 'rgba(0,0,0,0.3)',
+  },
+  logoBadge: {
+    position: 'absolute',
+    bottom: 16,
+    left: 16,
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    backgroundColor: '#ffffff',
+    overflow: 'hidden',
+    borderWidth: 3,
+    borderColor: '#ffffff',
+  },
+  logoImage: {
+    width: '100%',
+    height: '100%',
+  },
+  infoRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    padding: 16,
+  },
+  leftInfo: {
+    flex: 1,
+    gap: 8,
+  },
+  restaurantName: {
+    fontSize: 18,
+    fontWeight: '800',
+    color: '#191c1e',
+    letterSpacing: -0.5,
+  },
+  pillRow: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  pill: {
+    backgroundColor: '#f2f4f6',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 9999,
+  },
+  pillText: {
+    fontSize: 10,
+    fontWeight: '700',
+    color: '#5c4037',
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  starBadge: {
+    backgroundColor: '#fff7ed',
+    borderRadius: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    gap: 4,
+  },
+  starIcon: {
+    fontSize: 12,
+  },
+  starText: {
+    fontSize: 14,
+    fontWeight: '900',
+    color: '#a93100',
+  },
+});

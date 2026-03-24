@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Location Access | The Culinary Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#00855b",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#6ffbbe",
+              "primary-fixed-dim": "#ffb59e",
+              "surface-container": "#eceef0",
+              "tertiary-fixed-dim": "#4edea3",
+              "secondary-fixed-dim": "#ffb59e",
+              "on-surface": "#191c1e",
+              "on-tertiary-fixed-variant": "#005236",
+              "on-surface-variant": "#5c4037",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed-variant": "#832602",
+              "error": "#ba1a1a",
+              "surface-container-low": "#f2f4f6",
+              "inverse-surface": "#2d3133",
+              "on-primary-container": "#fffbff",
+              "outline-variant": "#e6beb2",
+              "error-container": "#ffdad6",
+              "surface-variant": "#e0e3e5",
+              "inverse-primary": "#ffb59e",
+              "background": "#f8f9fb",
+              "surface-container-highest": "#e0e3e5",
+              "surface-dim": "#d8dadc",
+              "on-secondary": "#ffffff",
+              "outline": "#916f65",
+              "primary-container": "#d34000",
+              "surface-tint": "#ad3300",
+              "on-primary-fixed": "#3a0b00",
+              "primary": "#a93100",
+              "surface": "#f8f9fb",
+              "inverse-on-surface": "#eff1f3",
+              "on-error-container": "#93000a",
+              "secondary": "#a43d19",
+              "on-secondary-container": "#6d1d00",
+              "surface-bright": "#f8f9fb",
+              "on-secondary-fixed": "#3a0b00",
+              "tertiary": "#006947",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-container": "#f5fff6",
+              "on-background": "#191c1e",
+              "secondary-fixed": "#ffdbd0",
+              "primary-fixed": "#ffdbd0",
+              "on-primary-fixed-variant": "#842500",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#e6e8ea",
+              "secondary-container": "#fd7f56",
+              "on-tertiary-fixed": "#002113"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-mesh {
+            background-color: #f8f9fb;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(169, 49, 0, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 105, 71, 0.05) 0px, transparent 50%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body min-h-screen flex items-center justify-center p-4">
+<!-- Focus Journey: Navigation Hidden to prioritize Location Canvas -->
+<main class="w-full max-w-md bg-surface-container-lowest rounded-xl shadow-[0_32px_64px_-12px_rgba(169,49,0,0.08)] overflow-hidden relative">
+<!-- Top Visual Section -->
+<div class="relative h-72 bg-mesh flex items-center justify-center overflow-hidden">
+<!-- Decorative Elements -->
+<div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#a93100 1px, transparent 1px); background-size: 24px 24px;">
+</div>
+<!-- Map Illustration Container -->
+<div class="relative z-10 w-48 h-48 rounded-full bg-white/40 backdrop-blur-md flex items-center justify-center shadow-inner border border-white/50">
+<div class="w-32 h-32 rounded-full bg-gradient-to-tr from-primary to-secondary-container flex items-center justify-center shadow-[0_12px_32px_rgba(169,49,0,0.2)]">
+<span class="material-symbols-outlined text-white text-6xl" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+<!-- Animated Pulse Effect Simulation -->
+<div class="absolute inset-0 rounded-full border-2 border-primary/20 animate-ping"></div>
+</div>
+<!-- Background Texture Image -->
+<div class="absolute inset-0 -z-10">
+<img alt="Clean minimalist map background with soft focus urban grid" class="w-full h-full object-cover opacity-10" data-alt="abstract minimalist map with soft gray lines and warm golden lighting on a white textured paper surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAITv1u60RGeN3fZ8NfCzfOvxywKU4GRHHesh_aLMkfhMGeNRBdUirGBORkEpZlicvYP9SACnHu8PoJUqg39SybJ-0uiCbQXyRM16Mommww97j1XnllPr2gann29En0wgRocH3Vaz2NejrtUSAlGpKL4tLoIhN-ACsmcTwdF4QPbd-X14kX5NF4Ci_hEmGpJN-YablrEYDbCv0h9So3jMLPS9Z48j-vvoU5JsGs7QxxEf-Xou-AvNltC6xhJAhOz9QpVBG0NU54WIk"/>
+</div>
+</div>
+<!-- Content Section -->
+<div class="px-8 pt-8 pb-10 flex flex-col items-center text-center">
+<!-- Header Group -->
+<header class="mb-10">
+<h1 class="font-headline font-extrabold text-2xl tracking-tight text-on-surface mb-3 leading-tight">
+                    Discover Restaurants Near You
+                </h1>
+<p class="text-on-surface-variant text-body-md leading-relaxed px-4">
+                    We need your location to show available food delivery options from the finest curators in your area.
+                </p>
+</header>
+<!-- Action Cluster -->
+<div class="w-full space-y-4">
+<!-- Primary Action: Allow Location -->
+<button class="group relative w-full overflow-hidden rounded-lg bg-gradient-to-br from-primary to-primary-container p-[1px] transition-all hover:shadow-[0_8px_24px_rgba(169,49,0,0.2)] active:scale-95">
+<div class="relative flex h-14 items-center justify-center gap-2 rounded-[15px] bg-transparent px-6 text-white font-bold tracking-tight">
+<span class="material-symbols-outlined text-xl">near_me</span>
+<span>Allow Location Access</span>
+</div>
+</button>
+<!-- Secondary Action: Manual Entry -->
+<button class="w-full h-14 flex items-center justify-center gap-2 rounded-lg border-2 border-outline-variant text-on-surface font-semibold hover:bg-surface-container-low transition-colors active:scale-95">
+<span class="material-symbols-outlined text-xl">edit_location_alt</span>
+<span>Enter Address Manually</span>
+</button>
+</div>
+<!-- Brand Identity Anchor -->
+<footer class="mt-12 opacity-40 flex items-center gap-2">
+<span class="text-xs font-black uppercase tracking-widest text-on-surface">The Culinary Curator</span>
+</footer>
+</div>
+<!-- Decorative Corner Accent -->
+<div class="absolute top-0 right-0 p-6 opacity-20">
+<span class="material-symbols-outlined text-4xl text-primary">restaurant_menu</span>
+</div>
+</main>
+<!-- Contextual Information (Optional sub-text for high-end feel) -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 text-center w-full max-w-xs">
+<p class="text-[10px] uppercase tracking-[0.1em] text-on-surface-variant/60 font-medium">
+            Your privacy is our recipe's secret ingredient.
+        </p>
+</div>
+</body></html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-surface": "#2d3133",
+              "on-error": "#ffffff",
+              "outline": "#916f65",
+              "primary-fixed-dim": "#ffb59e",
+              "primary-container": "#d34000",
+              "on-tertiary-fixed-variant": "#005236",
+              "on-secondary-container": "#6d1d00",
+              "on-primary-fixed": "#3a0b00",
+              "surface-bright": "#f8f9fb",
+              "error-container": "#ffdad6",
+              "secondary-container": "#fd7f56",
+              "surface-container-low": "#f2f4f6",
+              "tertiary-container": "#00855b",
+              "on-surface-variant": "#5c4037",
+              "on-tertiary-fixed": "#002113",
+              "outline-variant": "#e6beb2",
+              "on-secondary-fixed": "#3a0b00",
+              "surface-tint": "#ad3300",
+              "tertiary": "#006947",
+              "on-secondary-fixed-variant": "#832602",
+              "surface-container-highest": "#e0e3e5",
+              "error": "#ba1a1a",
+              "secondary": "#a43d19",
+              "on-primary-container": "#fffbff",
+              "on-primary": "#ffffff",
+              "on-background": "#191c1e",
+              "background": "#f8f9fb",
+              "surface-container": "#eceef0",
+              "secondary-fixed": "#ffdbd0",
+              "inverse-on-surface": "#eff1f3",
+              "on-tertiary-container": "#f5fff6",
+              "surface-dim": "#d8dadc",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#ffb59e",
+              "surface-variant": "#e0e3e5",
+              "on-primary-fixed-variant": "#842500",
+              "primary": "#a93100",
+              "on-surface": "#191c1e",
+              "tertiary-fixed": "#6ffbbe",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#ffdbd0",
+              "surface": "#f8f9fb",
+              "on-tertiary": "#ffffff",
+              "tertiary-fixed-dim": "#4edea3",
+              "surface-container-high": "#e6e8ea",
+              "on-secondary": "#ffffff",
+              "secondary-fixed-dim": "#ffb59e"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "1rem", "xl": "1.25rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .ios-switch:checked + .ios-slider { background-color: #a93100; }
+        .ios-switch:checked + .ios-slider:before { transform: translateX(1.25rem); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased pb-32">
+<!-- Top Navigation Anchor (Shared Component) -->
+<header class="fixed top-0 w-full z-50 bg-white/85 backdrop-blur-xl shadow-[0_12px_32px_rgba(169,49,0,0.06)]">
+<div class="flex items-center justify-between px-6 py-4 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-orange-600">location_on</span>
+<h1 class="font-['Inter'] font-bold tracking-tight text-xl font-black text-orange-600">Citrus Market</h1>
+</div>
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden ring-2 ring-orange-50 active:scale-95 duration-200 transition-opacity hover:opacity-80">
+<img alt="Store Manager Profile" data-alt="Close-up portrait of a friendly professional female store manager smiling in a modern bright setting with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfHwr8GyB9S64myKIG-xCL3Qh0burBVnE7oB4GP-JbRSQXHVyzzg7aL9eIz1sqvJFZMBTL92EDxNLdibiBfcB_WVjkVX3b99k6rNpAvvd8No68iNhh3i0QWyRFYHtouyuTA5y2QAT-i1tftlq2mOjEF1EZ9pbfDdORtw6OPAKYLmvevq_vGdClh1vprVU7WzVABMZzfk6I5XyUT3_7jWcUUBZvGjk3K1LnpacDF9fNM0ocim785VLgT2HVu8_oUnkuf1J6_LjxKWs"/>
+</div>
+</div>
+</header>
+<!-- Master Store Kill Switch (Fixed beneath Header) -->
+<section class="fixed top-[72px] w-full z-40 bg-white/95 backdrop-blur-md px-4 py-6 border-b border-slate-100">
+<div class="max-w-md mx-auto">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container p-6 rounded-xl shadow-[0_12px_32px_rgba(169,49,0,0.15)] flex items-center justify-between group active:scale-[0.98] transition-all">
+<div class="text-left">
+<p class="text-[11px] font-bold uppercase tracking-[0.15em] text-orange-100 mb-1">Mağaza Durumu</p>
+<h2 class="text-white text-lg font-extrabold tracking-tight">DÜKKAN ÇEVRİMİÇİ</h2>
+<p class="text-orange-200 text-sm font-medium">Sipariş Alınıyor</p>
+</div>
+<div class="bg-white/20 p-3 rounded-full">
+<span class="material-symbols-outlined text-white text-3xl" style="font-variation-settings: 'FILL' 1;">power_settings_new</span>
+</div>
+</button>
+</div>
+</section>
+<!-- Content Area: Menu Inventory -->
+<main class="mt-[240px] px-4 max-w-md mx-auto">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-on-surface font-black text-2xl tracking-tight">Menü Yönetimi</h3>
+<span class="text-primary text-sm font-bold bg-orange-50 px-3 py-1 rounded-full">32 Ürün</span>
+</div>
+<!-- Inventory List -->
+<div class="space-y-4">
+<!-- Category: Popüler Ürünler -->
+<div class="pt-2">
+<label class="text-[11px] font-black uppercase tracking-widest text-slate-400 mb-4 block">Popüler Ürünler</label>
+<div class="space-y-3">
+<!-- Item 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center justify-between transition-opacity duration-300">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-lg bg-surface-container-low overflow-hidden">
+<img alt="Classic Burger" data-alt="Gourmet classic cheeseburger with melting cheddar fresh lettuce and tomato on a toasted brioche bun professional food photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7ykk24SsrTgig0v1WGwMzosOgjd_PvQ2OmVpnPuWkWhXaGfRTo8IagjNaclsokeRP7gnFLwh2il-b0VqMRYJ3QatiWvXvKr_1qr5lnYx7YtYeZk4oB18ZQL8W2WnE98g2WF-YGK-CnbukQJwXNFaMSKW50gRu4hzCUQfIFUWHYo2IbkKUiJ-qxidP1VLOdB0haVkgMDqLtho3v5RJNx3e1AjjWqxIm3h6w-1VJgpBaeQr0Ghmt_D0GbHVn2SVct3i_BzvK82GIvw"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Klasik Gurme Burger</h4>
+<p class="text-sm text-slate-500">145.00 TL</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer ios-switch" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 rounded-full peer peer-focus:ring-0 transition-colors duration-300 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary peer-checked:after:translate-x-full"></div>
+</label>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Tükendi</span>
+</div>
+</div>
+<!-- Item 2 (Ghostly Gray State Example) -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center justify-between opacity-50 grayscale-[0.5]">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-lg bg-surface-container-low overflow-hidden">
+<img alt="Healthy Bowl" data-alt="Vibrant healthy buddha bowl with avocado quinoa chickpeas and roasted vegetables colorful editorial style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCJZz5b5XJoNO2645g7JtKzdLa0CINV8aRp5O65czjHGRZv0W7OVKZAophTM-9wOgRzFZrc0ut7P7-PCZZbX_mN9pnVwaEzhvaCK2IIF_iue6nnKp7MSW54fq8JF5M_3wSIl0wMTBP1hWdbHoHGIBtsKB3k6kFQeWk_Rj3k94p5qgWeCg6GVoGR87y_0MOnRrEV-rvGTjHWeVwt-_nVSqBc6sIJVjm40sZCEES18cg7IjPsMlw3EKgoWTlIq7sAJYTnt59RKc5VnI"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Avokado Fit Kase</h4>
+<p class="text-sm text-slate-500">180.00 TL</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer ios-switch" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 rounded-full peer peer-focus:ring-0 transition-colors duration-300 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary peer-checked:after:translate-x-full"></div>
+</label>
+<span class="text-[10px] font-bold text-primary uppercase tracking-tighter">Tükendi</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-lg bg-surface-container-low overflow-hidden">
+<img alt="Pizza Slice" data-alt="Close-up of a rustic Margherita pizza slice with melted buffalo mozzarella and fresh basil leaves on a stone background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXnGTm0AT71AbEeRMQMKVpPM6dAzU6F3yjvgayXum_mTlikf0Nxj25baJzmuObcFlu-0Ati37rx-CoQSscTkP3GGlqJYZ7pPKuGkY5SlWUcntPqLM3n_GjmCTehbZB2Dil30hU4YjJZkI_4SQgWlVki8CJDwsqyc8jOJJGEUOTyY2f7yIKRFAFNURHt1NbFJ3sKidSi4VEIZI7buGRSL8neCTHG8hjklvLTy-NL8y0dSJyVobHRKdeiJt6Fhe11m40uEUJ6RzmjN0"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Margherita Pizza</h4>
+<p class="text-sm text-slate-500">210.00 TL</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer ios-switch" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 rounded-full peer peer-focus:ring-0 transition-colors duration-300 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary peer-checked:after:translate-x-full"></div>
+</label>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Tükendi</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Category: İçecekler -->
+<div class="pt-6">
+<label class="text-[11px] font-black uppercase tracking-widest text-slate-400 mb-4 block">İçecekler</label>
+<div class="space-y-3">
+<!-- Item 4 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-lg bg-surface-container-low overflow-hidden">
+<img alt="Cola" data-alt="Cold glass bottle of cola with condensation on the glass and ice cubes nearby refreshing studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEvfZeZ1gNiVLeahh5pbh-F89keU3SOaPpluAP12nF2UN0N_Bi2skWpWlXpCxc2jmWpOBLZ3kh4BHVI23hP2ArpifrwA27IvEQxidWBOl5TmOYTCiXHP0-wIZcurbF9-tORYDgFfOgUHEc8P0hCJ4Gzq6EPYJbqpupwZV8DB0-5HGaDecL6fwmR55HmKEp6AZpEc98PNtitQEfXXl7ni7b0D45peqb9SQstG7z9KWsV3yQ3h8s9dJhOw_Jge7lapAGco3570ModlE"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Kutu Kola 330ml</h4>
+<p class="text-sm text-slate-500">45.00 TL</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer ios-switch" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 rounded-full peer peer-focus:ring-0 transition-colors duration-300 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary peer-checked:after:translate-x-full"></div>
+</label>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Tükendi</span>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-lg bg-surface-container-low overflow-hidden">
+<img alt="Orange Juice" data-alt="Freshly squeezed orange juice in a clear glass with pulp and orange slices bright sunny morning aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6bkD45TLJBO77t8kCCmeBaJe84PojerO490SNe7osc_edabOI37YNoATvb0Bn07p0poZ4Tl5l2OXe8Iyz1dEgJ0yz1y1BAtn7q1iw27cl9_XRP9uNt3pgklx9y6J-MdZ8CyyCQOAyQL8RPJCCqbAfnckwt97HbUOvoJs1FII7QDZN2QPO1-5oJ8t9_E8vTSh16W6lzfYA6jaEfJhjntLRSnwkUmShHO8dhQwSlp8_po6VZMiBPKakl-nO3_oHNsfVEaQ_7i5_Bwg"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Taze Sıkma Portakal</h4>
+<p class="text-sm text-slate-500">65.00 TL</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer ios-switch" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 rounded-full peer peer-focus:ring-0 transition-colors duration-300 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary peer-checked:after:translate-x-full"></div>
+</label>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Tükendi</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Quick Action (Optional Helper) -->
+<div class="mt-8 flex items-center justify-center">
+<button class="flex items-center gap-2 bg-surface-container-high px-6 py-3 rounded-full text-on-surface-variant font-bold text-sm hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+                Yeni Ürün Ekle
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation Shell (Shared Component) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/85 backdrop-blur-xl border-t border-slate-100 z-50 shadow-[0_-8px_24px_rgba(0,0,0,0.04)]">
+<div class="flex flex-col items-center justify-center text-slate-500 px-4 py-1 hover:text-orange-500 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[11px] font-['Inter'] font-medium uppercase tracking-wider">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 px-4 py-1 hover:text-orange-500 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">search</span>
+<span class="text-[11px] font-['Inter'] font-medium uppercase tracking-wider">Search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 px-4 py-1 hover:text-orange-500 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="text-[11px] font-['Inter'] font-medium uppercase tracking-wider">Orders</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-orange-50 text-orange-600 rounded-2xl px-4 py-1 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-[11px] font-['Inter'] font-medium uppercase tracking-wider">Profile</span>
+</div>
+</nav>
+</body></html>

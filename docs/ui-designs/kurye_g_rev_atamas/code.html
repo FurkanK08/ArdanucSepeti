@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-surface": "#2d3133",
+              "on-error": "#ffffff",
+              "outline": "#916f65",
+              "primary-fixed-dim": "#ffb59e",
+              "primary-container": "#d34000",
+              "on-tertiary-fixed-variant": "#005236",
+              "on-secondary-container": "#6d1d00",
+              "on-primary-fixed": "#3a0b00",
+              "surface-bright": "#f8f9fb",
+              "error-container": "#ffdad6",
+              "secondary-container": "#fd7f56",
+              "surface-container-low": "#f2f4f6",
+              "tertiary-container": "#00855b",
+              "on-surface-variant": "#5c4037",
+              "on-tertiary-fixed": "#002113",
+              "outline-variant": "#e6beb2",
+              "on-secondary-fixed": "#3a0b00",
+              "surface-tint": "#ad3300",
+              "tertiary": "#006947",
+              "on-secondary-fixed-variant": "#832602",
+              "surface-container-highest": "#e0e3e5",
+              "error": "#ba1a1a",
+              "secondary": "#a43d19",
+              "on-primary-container": "#fffbff",
+              "on-primary": "#ffffff",
+              "on-background": "#191c1e",
+              "background": "#f8f9fb",
+              "surface-container": "#eceef0",
+              "secondary-fixed": "#ffdbd0",
+              "inverse-on-surface": "#eff1f3",
+              "on-tertiary-container": "#f5fff6",
+              "surface-dim": "#d8dadc",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#ffb59e",
+              "surface-variant": "#e0e3e5",
+              "on-primary-fixed-variant": "#842500",
+              "primary": "#a93100",
+              "on-surface": "#191c1e",
+              "tertiary-fixed": "#6ffbbe",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#ffdbd0",
+              "surface": "#f8f9fb",
+              "on-tertiary": "#ffffff",
+              "tertiary-fixed-dim": "#4edea3",
+              "surface-container-high": "#e6e8ea",
+              "on-secondary": "#ffffff",
+              "secondary-fixed-dim": "#ffb59e"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        @keyframes pulse-border {
+            0%, 100% { border-color: rgba(169, 49, 0, 0.8); box-shadow: 0 0 0 0 rgba(169, 49, 0, 0.4); }
+            50% { border-color: rgba(169, 49, 0, 1); box-shadow: 0 0 40px 10px rgba(169, 49, 0, 0.2); }
+        }
+        .animate-urgent-border {
+            animation: pulse-border 1.5s infinite;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-white/85 dark:bg-slate-900/85 backdrop-blur-xl shadow-[0_12px_32px_rgba(169,49,0,0.06)]">
+<div class="flex items-center justify-between px-6 py-4 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-orange-600 dark:text-orange-500">location_on</span>
+<span class="font-['Inter'] font-bold tracking-tight text-xl font-black text-orange-600 dark:text-orange-500">Citrus Market</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Courier Profile" data-alt="portrait of a professional delivery courier smiling with a clean urban background soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrSsEyvpbz4yH__-Mz-2RaNUi1ikA7rF8Tv52jg2JBgMzK-QXTJh62pL_zW6m0WenEKkVVAMoRFmxlUFtHUZZokGBjDpql6gUGFI90HO19E2U3Q3iPD5OpGzOKjlRel_JckPBoMjsbZ-U_IehvvnbFaBr-R2fnHf69huxEkvUWc24cJH6jqZXRtggVnJBdUf0fra47o0G4DkQkfPOE0KeakeHjc54SP64Fzj-Clj6nXeWH9olZd3DlzigOjhvvvcSDuvt3fFSpV4g"/>
+</div>
+</div>
+</header>
+<!-- Main Map Background (Simulated) -->
+<main class="relative h-screen w-full pt-20">
+<div class="absolute inset-0 z-0 bg-surface-container">
+<img class="w-full h-full object-cover opacity-60 grayscale-[20%]" data-alt="top down view of a detailed city map with streets and blocks in a clean modern cartography style" data-location="Istanbul" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzr1g7sKqQJOBK7EkfweomKj9h-BO0QWhR4bZzzT1U1mnxXai8rTshwqMaZPRfH_O9p79laiSsSnrmS2QVt9uHY7zEuXe_am9evt4iOmPDeTlBi8276Lm16qUtz8T3T2e1fZNrY_W1xgo_ZEUnGx6qZIl_ChSoMB_lXRJFccbyzmMLmJhjNE35fm5Edv12ci_UiT-SoC6Dq9R30v0N4SVQFWyF965WsJM2tnrT6lEa0ckfjyWXr-_UVrZo0L2cy2I2iUj7BqyYC8A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+</div>
+<!-- Giant Overlay Modal -->
+<div class="absolute inset-0 z-[60] flex items-center justify-center p-4 sm:p-8 bg-on-surface/40 backdrop-blur-sm">
+<div class="w-full max-w-2xl bg-surface-container-lowest rounded-[2rem] overflow-hidden border-8 border-primary animate-urgent-border flex flex-col relative">
+<!-- Urgent Banner -->
+<div class="bg-primary text-on-primary py-6 px-8 flex items-center justify-center gap-4">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+<h1 class="text-3xl md:text-5xl font-black tracking-tighter uppercase font-headline">YENİ TESLİMAT GÖREVİ!</h1>
+</div>
+<div class="p-8 space-y-10">
+<!-- Delivery Route Bento -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Pickup Card -->
+<div class="bg-surface-container-low p-6 rounded-2xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-7xl">restaurant</span>
+</div>
+<div class="relative z-10">
+<span class="text-primary font-bold text-xs uppercase tracking-widest block mb-2">ALIM NOKTASI</span>
+<h2 class="text-2xl font-extrabold text-on-surface leading-tight mb-2">Burger Station</h2>
+<p class="text-on-surface-variant text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span> Hazırlanıyor • 4 dk
+                                </p>
+</div>
+</div>
+<!-- Dropoff Card -->
+<div class="bg-surface-container-low p-6 rounded-2xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-7xl">distance</span>
+</div>
+<div class="relative z-10">
+<span class="text-secondary font-bold text-xs uppercase tracking-widest block mb-2">TESLİMAT BÖLGESİ</span>
+<h2 class="text-2xl font-extrabold text-on-surface leading-tight mb-2">Kadıköy Moda</h2>
+<p class="text-on-surface-variant text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">navigation</span> 1.8 km uzaklıkta
+                                </p>
+</div>
+</div>
+</div>
+<!-- Earnings & Info -->
+<div class="flex flex-wrap items-center justify-between gap-6 px-4">
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-medium text-sm">Tahmini Kazanç</span>
+<span class="text-4xl font-black text-on-surface">₺85,50</span>
+</div>
+<div class="flex items-center gap-3 bg-secondary-container/10 px-5 py-3 rounded-full">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">speed</span>
+</div>
+<div>
+<span class="block text-[10px] font-bold uppercase tracking-wider text-secondary">Bonus Fırsatı</span>
+<span class="block text-sm font-bold text-on-surface">+₺15,00 Yoğunluk Ekstra</span>
+</div>
+</div>
+</div>
+<!-- Pulse Button Container -->
+<div class="pt-4">
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-8 px-6 rounded-2xl flex items-center justify-center gap-4 shadow-[0_12px_32px_rgba(169,49,0,0.3)] active:scale-95 transition-all duration-200">
+<span class="text-3xl md:text-4xl font-black uppercase tracking-tight font-headline">GÖREVİ KABUL ET</span>
+<span class="material-symbols-outlined text-4xl">arrow_forward_ios</span>
+</button>
+<button class="w-full py-4 text-on-surface-variant font-bold text-sm uppercase tracking-widest mt-4 hover:text-error transition-colors">
+                            PAS GEÇ
+                        </button>
+</div>
+</div>
+<!-- Subtle Texture Overlay -->
+<div class="absolute inset-0 pointer-events-none opacity-[0.03]" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDybHhR3tGvITm-F6E5Z6y15Drf8FqQgp5juSTuX_DPCCpk1UflFKqxP255WhFodk2SadiU8Z7heLpWZtrLd-CFNYjjNChWBiLlNQHb9Rd-qkRQ9gKyuzCRsUJidjPdRFNWEOE_nc3H1JLYOf6r6zXUK5ed1g4ZF_Df6JE8KAwK0SG9qG-LGM88Q2U_BKgZMq6-X4dyOm4uvSTMdi93x-MOrL3NjkkbAJcte1SC90KwE1XI50zA4u_x-jnFUG83fsW3wCO3-yo6FoE');"></div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Hidden on this transactional screen as per protocol, but defined by JSON) -->
+<!-- Suppression logic applied: This is a high-focus transactional/modal screen -->
+<!-- Modal Background Decor -->
+<div class="fixed top-1/4 left-10 w-64 h-64 bg-primary/10 rounded-full blur-[100px] -z-10"></div>
+<div class="fixed bottom-1/4 right-10 w-96 h-96 bg-orange-200/20 rounded-full blur-[120px] -z-10"></div>
+</body></html>

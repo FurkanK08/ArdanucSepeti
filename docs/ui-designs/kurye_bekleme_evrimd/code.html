@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Citrus Market Courier - Standby</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-surface": "#2d3133",
+              "on-error": "#ffffff",
+              "outline": "#916f65",
+              "primary-fixed-dim": "#ffb59e",
+              "primary-container": "#d34000",
+              "on-tertiary-fixed-variant": "#005236",
+              "on-secondary-container": "#6d1d00",
+              "on-primary-fixed": "#3a0b00",
+              "surface-bright": "#f8f9fb",
+              "error-container": "#ffdad6",
+              "secondary-container": "#fd7f56",
+              "surface-container-low": "#f2f4f6",
+              "tertiary-container": "#00855b",
+              "on-surface-variant": "#5c4037",
+              "on-tertiary-fixed": "#002113",
+              "outline-variant": "#e6beb2",
+              "on-secondary-fixed": "#3a0b00",
+              "surface-tint": "#ad3300",
+              "tertiary": "#006947",
+              "on-secondary-fixed-variant": "#832602",
+              "surface-container-highest": "#e0e3e5",
+              "error": "#ba1a1a",
+              "secondary": "#a43d19",
+              "on-primary-container": "#fffbff",
+              "on-primary": "#ffffff",
+              "on-background": "#191c1e",
+              "background": "#f8f9fb",
+              "surface-container": "#eceef0",
+              "secondary-fixed": "#ffdbd0",
+              "inverse-on-surface": "#eff1f3",
+              "on-tertiary-container": "#f5fff6",
+              "surface-dim": "#d8dadc",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#ffb59e",
+              "surface-variant": "#e0e3e5",
+              "on-primary-fixed-variant": "#842500",
+              "primary": "#a93100",
+              "on-surface": "#191c1e",
+              "tertiary-fixed": "#6ffbbe",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#ffdbd0",
+              "surface": "#f8f9fb",
+              "on-tertiary": "#ffffff",
+              "tertiary-fixed-dim": "#4edea3",
+              "surface-container-high": "#e6e8ea",
+              "on-secondary": "#ffffff",
+              "secondary-fixed-dim": "#ffb59e"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased selection:bg-primary/20">
+<!-- TopAppBar Shell Implementation -->
+<header class="fixed top-0 w-full z-50 bg-white/85 dark:bg-slate-900/85 backdrop-blur-xl shadow-[0_12px_32px_rgba(169,49,0,0.06)]">
+<div class="flex items-center justify-between px-6 py-4 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-orange-600 dark:text-orange-500" data-icon="location_on">location_on</span>
+<h1 class="font-['Inter'] font-bold tracking-tight text-xl font-black text-orange-600 dark:text-orange-500">Citrus Market</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container shadow-sm">
+<img alt="Courier Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a professional courier smiling confidently, outdoor urban setting, soft daylight, warm skin tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC69NelviHSX0b-6pias9tQKklv161dsx-t-Vw0oLOLkFXGhwXe1bGfc179FeTn21XbAcEOFHuLy5F0hZEzcoasMN9tokTvtAvx2fCK5JL-ZrVkyxfIDXiDLYwTe3maWnlKpuqz2jFmNalB5p6e0nYHOWV2euOUEkuAwbZZuPEaUmLhAAH7YiVWuUpPmjUHAE9ZSGwszrlzKZJSc6jv0HFeuVr2hKkthJcD6wHQl8gEpbZUZNFj-Yyz6oyK6ST_bi_iaEl9svpeqwI"/>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex flex-col items-center justify-center min-h-screen p-6 relative">
+<!-- Abstract Background Detail -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+<div class="absolute -top-[10%] -right-[5%] w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute bottom-[20%] -left-[10%] w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+</div>
+<!-- Standby Status Section -->
+<div class="w-full max-w-sm flex flex-col items-center gap-12 text-center z-10">
+<!-- Central Power Button Section -->
+<div class="relative group">
+<!-- Outer Ring Glow -->
+<div class="absolute inset-0 bg-primary/20 rounded-full blur-2xl scale-125 group-active:scale-150 transition-transform duration-500"></div>
+<!-- Main Circular Power Button -->
+<button class="relative w-56 h-56 rounded-full bg-gradient-to-br from-primary to-primary-container flex items-center justify-center shadow-[0_24px_48px_rgba(169,49,0,0.25)] active:scale-90 transition-transform duration-200 focus:outline-none focus:ring-4 focus:ring-primary/20">
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-on-primary text-7xl font-light" data-icon="power_settings_new">power_settings_new</span>
+</div>
+</button>
+</div>
+<!-- Status Text -->
+<div class="flex flex-col gap-4">
+<h2 class="text-3xl font-black tracking-tight text-on-surface">Şu an ÇEVRİMDIŞISIN</h2>
+<p class="text-on-surface-variant text-lg font-medium leading-relaxed">Sipariş almak için butona dokun</p>
+</div>
+</div>
+<!-- Courier Dashboard Stats (Mini) -->
+<div class="mt-16 w-full max-w-sm grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col items-center justify-center text-center">
+<span class="text-label-md uppercase tracking-wider text-on-surface-variant mb-1">Bugün</span>
+<span class="text-2xl font-bold text-on-surface">₺0.00</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col items-center justify-center text-center">
+<span class="text-label-md uppercase tracking-wider text-on-surface-variant mb-1">Puan</span>
+<div class="flex items-center gap-1">
+<span class="text-2xl font-bold text-on-surface">5.0</span>
+<span class="material-symbols-outlined text-primary text-xl" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shell Implementation -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/85 dark:bg-slate-900/85 backdrop-blur-xl border-t border-slate-100 dark:border-slate-800 shadow-[0_-8px_24px_rgba(0,0,0,0.04)] z-50">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400 rounded-2xl px-4 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-0.5" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[11px] font-['Inter'] font-medium uppercase tracking-wider">Home</span>
+</a>
+<!-- Search -->
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-orange-500 dark:hover:text-orange-300 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-0.5" data-icon="search">search</span>
+<span class="text-[11px] font-['Inter'] font-medium uppercase tracking-wider">Search</span>
+</a>
+<!-- Orders -->
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-orange-500 dark:hover:text-orange-300 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-0.5" data-icon="shopping_bag">shopping_bag</span>
+<span class="text-[11px] font-['Inter'] font-medium uppercase tracking-wider">Orders</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-orange-500 dark:hover:text-orange-300 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-0.5" data-icon="person">person</span>
+<span class="text-[11px] font-['Inter'] font-medium uppercase tracking-wider">Profile</span>
+</a>
+</nav>
+</body></html>

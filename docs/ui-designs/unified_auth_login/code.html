@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | The Culinary Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#00855b",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#6ffbbe",
+              "primary-fixed-dim": "#ffb59e",
+              "surface-container": "#eceef0",
+              "tertiary-fixed-dim": "#4edea3",
+              "secondary-fixed-dim": "#ffb59e",
+              "on-surface": "#191c1e",
+              "on-tertiary-fixed-variant": "#005236",
+              "on-surface-variant": "#5c4037",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed-variant": "#832602",
+              "error": "#ba1a1a",
+              "surface-container-low": "#f2f4f6",
+              "inverse-surface": "#2d3133",
+              "on-primary-container": "#fffbff",
+              "outline-variant": "#e6beb2",
+              "error-container": "#ffdad6",
+              "surface-variant": "#e0e3e5",
+              "inverse-primary": "#ffb59e",
+              "background": "#f8f9fb",
+              "surface-container-highest": "#e0e3e5",
+              "surface-dim": "#d8dadc",
+              "on-secondary": "#ffffff",
+              "outline": "#916f65",
+              "primary-container": "#d34000",
+              "surface-tint": "#ad3300",
+              "on-primary-fixed": "#3a0b00",
+              "primary": "#a93100",
+              "surface": "#f8f9fb",
+              "inverse-on-surface": "#eff1f3",
+              "on-error-container": "#93000a",
+              "secondary": "#a43d19",
+              "on-secondary-container": "#6d1d00",
+              "surface-bright": "#f8f9fb",
+              "on-secondary-fixed": "#3a0b00",
+              "tertiary": "#006947",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-container": "#f5fff6",
+              "on-background": "#191c1e",
+              "secondary-fixed": "#ffdbd0",
+              "primary-fixed": "#ffdbd0",
+              "on-primary-fixed-variant": "#842500",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#e6e8ea",
+              "secondary-container": "#fd7f56",
+              "on-tertiary-fixed": "#002113"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .bg-glass {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(20px);
+      }
+      .primary-gradient {
+        background: linear-gradient(135deg, #a93100 0%, #d34000 100%);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body min-h-screen flex flex-col items-center justify-center p-6">
+<!-- Top: Stylized Food Icon Section -->
+<header class="w-full flex flex-col items-center mb-12">
+<div class="w-24 h-24 bg-surface-container-lowest rounded-2xl flex items-center justify-center shadow-[0_12px_32px_rgba(169,49,0,0.06)] mb-6">
+<span class="material-symbols-outlined text-primary text-5xl" data-icon="restaurant">restaurant</span>
+</div>
+<h1 class="font-headline font-black text-2xl text-on-surface tracking-tighter">The Culinary Curator</h1>
+<p class="text-on-surface-variant font-medium text-sm mt-2 opacity-70">Welcome back to the kitchen</p>
+</header>
+<!-- Middle: Input Section -->
+<main class="w-full max-w-sm space-y-6">
+<div class="flex flex-col space-y-2">
+<label class="font-label text-[10px] uppercase tracking-[0.05em] font-bold text-outline ml-1">Phone Number</label>
+<div class="flex gap-3">
+<!-- Country Code Dropdown -->
+<div class="relative group">
+<div class="flex items-center justify-between bg-surface-container-low border border-outline-variant/30 rounded-2xl px-4 py-4 w-28 cursor-pointer hover:bg-surface-container-lowest transition-colors">
+<span class="font-headline font-bold text-on-surface">+01</span>
+<span class="material-symbols-outlined text-on-surface-variant text-xl" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Phone Input -->
+<div class="flex-1 relative">
+<input class="w-full bg-surface-container-low border border-outline-variant/30 rounded-2xl px-6 py-4 font-headline font-semibold text-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all placeholder:text-outline/40" placeholder="000 000 0000" type="tel"/>
+</div>
+</div>
+</div>
+<!-- Privacy/Terms Note -->
+<p class="text-center text-xs text-on-surface-variant leading-relaxed px-4 opacity-60">
+            By continuing, you agree to our Terms of Service and Privacy Policy. We'll send a code to verify your phone.
+        </p>
+</main>
+<!-- Bottom: Massive Action Button -->
+<footer class="w-full max-w-sm mt-12">
+<button class="primary-gradient w-full py-5 rounded-2xl shadow-[0_12px_32px_rgba(169,49,0,0.12)] active:scale-95 transition-all group">
+<span class="text-on-primary font-headline font-bold text-lg flex items-center justify-center gap-2">
+                Send OTP Code
+                <span class="material-symbols-outlined text-xl" data-icon="arrow_forward">arrow_forward</span>
+</span>
+</button>
+<div class="mt-8 flex items-center justify-center gap-6">
+<div class="h-[1px] flex-1 bg-outline-variant/20"></div>
+<span class="text-[10px] uppercase font-bold tracking-widest text-outline">or explore as</span>
+<div class="h-[1px] flex-1 bg-outline-variant/20"></div>
+</div>
+<button class="w-full mt-6 py-4 rounded-2xl bg-surface-container-low text-on-surface font-headline font-semibold text-sm hover:bg-surface-container-high transition-colors">
+            Continue as Guest
+        </button>
+</footer>
+<!-- Background Decoration for Editorial Feel -->
+<div class="fixed top-0 left-0 -z-10 w-full h-full overflow-hidden opacity-40">
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-1/4 -left-24 w-64 h-64 bg-tertiary/5 rounded-full blur-[80px]"></div>
+</div>
+</body></html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-surface": "#2d3133",
+              "on-error": "#ffffff",
+              "outline": "#916f65",
+              "primary-fixed-dim": "#ffb59e",
+              "primary-container": "#d34000",
+              "on-tertiary-fixed-variant": "#005236",
+              "on-secondary-container": "#6d1d00",
+              "on-primary-fixed": "#3a0b00",
+              "surface-bright": "#f8f9fb",
+              "error-container": "#ffdad6",
+              "secondary-container": "#fd7f56",
+              "surface-container-low": "#f2f4f6",
+              "tertiary-container": "#00855b",
+              "on-surface-variant": "#5c4037",
+              "on-tertiary-fixed": "#002113",
+              "outline-variant": "#e6beb2",
+              "on-secondary-fixed": "#3a0b00",
+              "surface-tint": "#ad3300",
+              "tertiary": "#10B981",
+              "on-secondary-fixed-variant": "#832602",
+              "surface-container-highest": "#e0e3e5",
+              "error": "#ba1a1a",
+              "secondary": "#a43d19",
+              "on-primary-container": "#fffbff",
+              "on-primary": "#ffffff",
+              "on-background": "#191c1e",
+              "background": "#f8f9fb",
+              "surface-container": "#eceef0",
+              "secondary-fixed": "#ffdbd0",
+              "inverse-on-surface": "#eff1f3",
+              "on-tertiary-container": "#f5fff6",
+              "surface-dim": "#d8dadc",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#ffb59e",
+              "surface-variant": "#e0e3e5",
+              "on-primary-fixed-variant": "#842500",
+              "primary": "#a93100",
+              "on-surface": "#191c1e",
+              "tertiary-fixed": "#6ffbbe",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#ffdbd0",
+              "surface": "#f8f9fb",
+              "on-tertiary": "#ffffff",
+              "tertiary-fixed-dim": "#4edea3",
+              "surface-container-high": "#e6e8ea",
+              "on-secondary": "#ffffff",
+              "secondary-fixed-dim": "#ffb59e"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- Success Overlay Container -->
+<main class="fixed inset-0 z-[100] bg-surface flex flex-col items-center justify-between p-8 overflow-hidden">
+<!-- Top Visual Elements (Subtle Branding) -->
+<div class="w-full flex justify-center pt-8">
+<div class="flex items-center gap-2">
+<span class="text-primary font-black text-2xl tracking-tighter">Citrus Market</span>
+</div>
+</div>
+<!-- Central Success Content -->
+<div class="flex flex-col items-center text-center max-w-md w-full">
+<!-- Playful Checkmark Illustration -->
+<div class="relative mb-12">
+<!-- Decorative Blobs -->
+<div class="absolute -inset-8 bg-tertiary/10 rounded-full blur-3xl"></div>
+<div class="absolute -top-4 -right-4 w-12 h-12 bg-secondary-container/20 rounded-full blur-xl"></div>
+<!-- The Main Checkmark Circle -->
+<div class="relative w-48 h-48 bg-tertiary rounded-full flex items-center justify-center shadow-[0_20px_50px_rgba(16,185,129,0.3)] border-8 border-surface-container-lowest">
+<span class="material-symbols-outlined text-[100px] text-white" style="font-variation-settings: 'FILL' 1; font-weight: 700;">check_circle</span>
+</div>
+</div>
+<!-- Text Content -->
+<h1 class="text-[2.75rem] font-black leading-[1.1] tracking-tight text-on-surface mb-4">
+                Siparişiniz Başarıyla Alındı!
+            </h1>
+<p class="text-on-surface-variant text-lg font-medium leading-relaxed max-w-[280px]">
+                Restoran siparişinizi şu an inceliyor.
+            </p>
+<!-- Wait Indicator Layout -->
+<div class="mt-10 flex items-center gap-3 bg-surface-container-low px-6 py-3 rounded-full border border-outline-variant/10">
+<div class="flex gap-1.5">
+<div class="w-2 h-2 rounded-full bg-tertiary animate-bounce"></div>
+<div class="w-2 h-2 rounded-full bg-tertiary/60 animate-bounce [animation-delay:0.2s]"></div>
+<div class="w-2 h-2 rounded-full bg-tertiary/30 animate-bounce [animation-delay:0.4s]"></div>
+</div>
+<span class="text-sm font-semibold text-tertiary uppercase tracking-widest">Hazırlanıyor</span>
+</div>
+</div>
+<!-- Bottom Action Area -->
+<div class="w-full max-w-md pb-8 space-y-4">
+<!-- Order Details Bento-ish Card -->
+<div class="bg-surface-container-low rounded-xl p-6 mb-8 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[11px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Tahmini Teslimat</span>
+<span class="text-xl font-bold text-on-surface">25-35 Dakika</span>
+</div>
+<div class="w-12 h-12 bg-surface-container-lowest rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">schedule</span>
+</div>
+</div>
+<!-- Primary Action Button -->
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-white font-bold text-lg py-5 rounded-xl shadow-[0_12px_32px_rgba(169,49,0,0.2)] active:scale-95 transition-all flex items-center justify-center gap-3">
+                Siparişi Takip Et
+                <span class="material-symbols-outlined">map</span>
+</button>
+<!-- Secondary Action -->
+<button class="w-full py-4 text-on-surface-variant font-bold text-sm hover:text-primary transition-colors">
+                Anasayfaya Dön
+            </button>
+</div>
+<!-- Background Decorative Image (Subtle Editorial Feel) -->
+<div class="absolute -bottom-20 -right-20 w-80 h-80 opacity-10 pointer-events-none">
+<img alt="abstract citrus fruit" class="w-full h-full object-contain rotate-12" data-alt="close-up of fresh vibrant orange slices with water droplets in high-end editorial food photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ7jD2om4jFMhCY3ubSjhlXFt1Q2r2ywYTyv51k78gWGha3vZ_5N6tDsQzUDkAab2HprZprig-LLWPsdiVaQHkueN3I4__POzgibjDINPmq27aVi47BCftkn5rrIA4zwLgBCI_IfwBEP-isTBdQYuqIIsUP9PHfDkfIZx3hPL7JK07gcZxvEvQRWO1Nx4KDyFYtebMZDkvGW_4EzVtUEQ_bb1A6eFgz-L908_C1zNGO8c-N4yyMQrvYxWmudH4M6ZHIqDDrrCBOkI"/>
+</div>
+</main>
+<!-- Success Pattern Overlay -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] z-[101]">
+<svg height="100%" width="100%">
+<pattern height="40" id="pattern-circles" patternunits="userSpaceOnUse" width="40" x="0" y="0">
+<circle cx="20" cy="20" fill="currentColor" r="1"></circle>
+</pattern>
+<rect fill="url(#pattern-circles)" height="100%" width="100%"></rect>
+</svg>
+</div>
+</body></html>
