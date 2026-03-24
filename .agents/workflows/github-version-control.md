@@ -29,7 +29,15 @@ Agent bir görevi (Screen veya Faz) başarıyla derleyip (tsc) test ettikten son
 3. Kurala uygun `git commit -m "..."` işlemini yapar.
 4. İlgili branch üzerinde `git push origin <branch-name>` komutunu çalıştırır.
 
-## 4. GitHub Repo Reference
+## 4. Security & Data Protection (Güvenlik Kuralları)
+Bu proje için Github güvenliği en üst seviyede tutulur. Agent ve geliştirici aşağıdaki kurallara mutlaka uymalıdır:
+
+1. **Never Commit Secrets (Gizli Veri Yasağı):** `.env` dosyaları, Supabase URL'si, Anon Key veya herhangi bir servis anahtarı Git'e KESİNLİKLE gönderilmez. Uygulamanın çalışması için her zaman `.env.example` gibi şablonlar kullanılarak `origin`'e sadece bu şablonlar itilir.
+2. **Hardcode Yasağı:** Kodların içine (`src/constants`, `supabaseClient.ts` vb.) doğrudan açık metin (plaintext) olarak API şifreleri yerleştirilemez.
+3. **Gitignore Denetimi:** Her push öncesinde `.env` ve `node_modules` klasörlerinin git tree'ye eklenip eklenmediği loglar üzerinden doğrulanmalıdır. 
+4. **Acil Durum (Key Leak):** Yanlışlıkla bir Private Key GitHub'a yüklenirse Agent, geliştiriciyi uyarır ve ilgili servisteki anahtarların revoke edilmesi (iptal edilip yenilenmesi) gerektiğini söyler.
+
+## 5. GitHub Repo Reference
 **Repository URL:** https://github.com/FurkanK08/ArdanucSepeti
 
 **Hatırlatma Agent'a:** İşleri parçalara böl (Atomicity). Büyük bir modül bitmeden commit atmak yerine anlamlı bir bütün olunca (örneğin UI bileşeni tamamlanınca) commit at.
