@@ -12,7 +12,7 @@ Bu workflow, Pazar Yeri uygulamasının **Müşteri (Customer)** tarafındaki he
 
 Ekran talebini netleştir:
 - Hangi ekran oluşturulacak? (`MarketplaceHomeScreen`, `CheckoutScreen` vb.)
-- Tasarım referansı `docs/ui-designs/` altında var mı?
+- Tasarım referansı `docs/ui-designs/` altında var mı? (Örn: `home_feed`, `restaurant_menu`, `checkout_screen`, `sipari_basarılı`, `bo_sepet_durumu`, `adres_se_imi_harita`, `location_permission`, `order_tracking`, `y_kleme_ekran_skeleton`, `unified_auth_login`, `otp_verification`, `citrus_market`, `citrus_sage`)
 
 Eksik bilgi varsa, **DURUR** ve netleştirme sorusu sorar.  
 Rolü doğrula: Bu ekran sadece `src/screens/customer/` altına yazılır.
@@ -76,11 +76,21 @@ Sorun varsa düzelt ve neyi değiştirdiğini açıkla.
 
 ---
 
-## Step 7 — Final Output & Summary
+## Step 7 — Error Prevention & Debugging Rules
+
+Geliştirme sırasında hataları en aza indirmek için şu kurallara KESİNLİKLE uy:
+1. **Asenkron İşlemler:** Tüm API veri çekme ve gönderme işlemleri (Supabase vb.) `try...catch` bloğuna alınmalıdır. Hatalar yakalanmalı ve React Native UI'ında (Alert veya Custom Toast) kullanıcıya sunulmalıdır ("Bir sorun oluştu").
+2. **Tip Güvenliği (TypeScript):** API'den dönen veriler veya context state'leri ASLA `any` olmamalıdır. Mutlaka interface tanımlanmalıdır.
+3. **Empty State & Null Check:** Liste (FlatList vb.) boşsa mutlaka `ListEmptyComponent` gösterilmelidir. Verinin yüklenmediği veya `undefined` olduğu durumlarda çökmemesi için `?.` ve `??` operatörleri kullanılmalıdır.
+4. **Loglama:** Catch bloğunun içinde `console.error(error)` ile root nedene dair log atılmalı ancak müşteri arayüzüne teknik hata mesajı ("Invariant Violation: ...") yansıtılmamalıdır.
+
+---
+
+## Step 8 — Final Output & Summary
 
 Şunları sun:
 - Oluşturulan dosyaların listesi
 - Ekranı navigasyona nasıl bağlayacağına dair kısa talimat
 - Opsiyonel sonraki adımlar (açıkça "Opsiyonel" etiketiyle)
 
-**Step 7 sonrası dur. Kapsam genişletme. Ekstra özellik ekleme.**
+**Step 8 sonrası dur. Kapsam genişletme. Ekstra özellik ekleme.**

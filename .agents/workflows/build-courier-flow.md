@@ -27,8 +27,9 @@ Sırayla oku:
 3. `.agents/skills/marketplace-ui/resources/tokens.json` → Tasarım sistemi
 4. `docs/ui-designs/kurye_bekleme_evrimd/code.html` → Standby ekranı referansı
 5. `docs/ui-designs/courier_navigation/code.html` → Aktif teslimat referansı
+6. `docs/ui-designs/kurye_g_rev_atamas/code.html` → Kurye görev atama referansı
 
-**KESİN KURAL (UI TASARIMI):** Her bir ekran mutlak suretle `docs/ui-designs/` içerisindeki HTML/Tailwind tasarımlarına sadık kalarak kodlanmalıdır. Klasörde ilgili tasarım dosyası bulunmuyorsa, işlem yapılmamalı ve kullanıcıdan HTML prototipi talep edilmelidir. Hayalden veya varsayılan bileşenlerle uydurma ekran yapılamaz.
+**KESİN KURAL (UI TASARIMI):** Her bir ekran mutlak suretle `docs/ui-designs/` içerisindeki HTML/Tailwind tasarımlarına sadık kalarak kodlanmalıdır. Klasörde ilgili tasarım dosyası bulunmuyorsa, işlem yapılmamalı ve kullanıcıdan HTML prototipi talep edilmelidir. Hayalden veya varsayılan bileşenlerle uydurma ekran yapılamaz. Mevcut Courier tasarımları: `kurye_bekleme_evrimd`, `courier_navigation`, `kurye_g_rev_atamas`, `kurye_acil_durum_bildirimi`, `kurye_kazan_c_zdan`, `kurye_profil_ayarlar`, `vardiya_ve_b_lge_se_imi`.
 
 ---
 
@@ -82,11 +83,21 @@ Kurye ekranları için standart yapı:
 
 ---
 
-## Step 7 — Final Output & Summary
+## Step 7 — Error Prevention & Debugging Rules
+
+Geliştirme sırasında hataları en aza indirmek için şu kurallara KESİNLİKLE uy:
+1. **Asenkron İşlemler:** Tüm Supabase/API çağrıları eksiksiz bir `try...catch` bloğuna alınmalıdır. `catch` bloğunda `Alert.alert` veya Toast ile kullanıcıya mantıklı bir hata mesajı gösterilmelidir (Örn: "Ağ hatası oluştu, lütfen tekrar deneyin"). Sessiz hata yutmak (silent fail) yasaktır.
+2. **Tip Güvenliği (TypeScript):** API'den dönen veriler asla `any` olarak bırakılamaz; Supabase DB tipleri veya özel arayüzler (interface) zorunludur.
+3. **Empty State & Null Check:** Listeler boş döndüğünde mutlaka yedek UI (Empty Component) gösterilmelidir. Tanımsız objelere erişimde çökmemesi için opsiyonel zincirleme (`obj?.prop`) kullanılmalıdır.
+4. **Loglama:** Beklenmeyen hatalar için `console.error` ile detaylı loglama yapılmalı, kuryenin sahada kalıp donmasına engel olunmalıdır.
+
+---
+
+## Step 8 — Final Output & Summary
 
 Şunları sun:
 - Oluşturulan dosyaların listesi
 - Navigasyona bağlama talimatı
 - Opsiyonel: Google Maps entegrasyonu için sonraki adımlar
 
-**Step 7 sonrası dur.**
+**Step 8 sonrası dur.**

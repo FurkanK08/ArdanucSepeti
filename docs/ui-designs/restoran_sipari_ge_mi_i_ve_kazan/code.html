@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-bright": "#f5f6f7",
+                        "secondary-dim": "#902c2b",
+                        "on-surface-variant": "#595c5d",
+                        "on-background": "#2c2f30",
+                        "secondary-fixed-dim": "#ffafaa",
+                        "tertiary": "#843d98",
+                        "on-secondary": "#ffefee",
+                        "error-container": "#fb5151",
+                        "surface-dim": "#d1d5d7",
+                        "secondary-fixed": "#ffc3bf",
+                        "tertiary-fixed-dim": "#dd8eef",
+                        "primary-fixed": "#ff784c",
+                        "secondary": "#a03836",
+                        "on-primary-container": "#460f00",
+                        "surface-container": "#e6e8ea",
+                        "secondary-container": "#ffc3bf",
+                        "on-primary-fixed-variant": "#561500",
+                        "outline-variant": "#abadae",
+                        "background": "#f5f6f7",
+                        "on-secondary-fixed": "#6a0f13",
+                        "primary": "#a83100",
+                        "on-tertiary": "#ffeefd",
+                        "on-error": "#ffefee",
+                        "surface-container-high": "#e0e3e4",
+                        "primary-fixed-dim": "#ff5d23",
+                        "on-secondary-container": "#852424",
+                        "surface-container-highest": "#dadddf",
+                        "inverse-primary": "#ff5717",
+                        "inverse-on-surface": "#9b9d9e",
+                        "outline": "#757778",
+                        "surface-container-low": "#eff1f2",
+                        "on-primary": "#ffefeb",
+                        "on-primary-fixed": "#000000",
+                        "surface-variant": "#dadddf",
+                        "on-tertiary-fixed": "#3b004c",
+                        "on-error-container": "#570008",
+                        "error": "#b31b25",
+                        "error-dim": "#9f0519",
+                        "surface-tint": "#a83100",
+                        "inverse-surface": "#0c0f10",
+                        "on-secondary-fixed-variant": "#912d2c",
+                        "on-tertiary-fixed-variant": "#651d79",
+                        "primary-dim": "#942a00",
+                        "on-surface": "#2c2f30",
+                        "on-tertiary-container": "#5b1170",
+                        "tertiary-container": "#eb9bfe",
+                        "surface": "#f5f6f7",
+                        "primary-container": "#ff784c",
+                        "tertiary-dim": "#77308b",
+                        "tertiary-fixed": "#eb9bfe",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-plus-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl shadow-sm shadow-orange-900/5 flex items-center justify-between px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden flex-shrink-0">
+<img alt="User Profile Photo" class="w-full h-full object-cover" data-alt="professional portrait of a restaurant owner in a modern kitchen setting with warm ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhCOIirwB9ghfuHOpZfxjw7LNEML0GeeUy1plnnR2a8JZE-TzDCpLyYjbp72IBXYIZB_eOLCikwjvVGwFFeaMJZdWrb-lpwE4TLi_2SZXLTQuWFbICvdMZ4UOvZpK5Oq2V1YsGe1GA5q_O23f3EN8qhwtgHD5b1mYUgwUa-Cjjwtv6bZezXaNASXBHHPCfDz8j0ZWF-0mxcKYmzz5hR9o19O70UKljf0RJmti4nWzjCUNCr-Wco0VjToW8XpPt6-bNh6yFdqQd5zuY"/>
+</div>
+<h1 class="font-plus-jakarta text-xl font-semibold tracking-tight text-orange-600 dark:text-orange-500">Digital Maître D’</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-zinc-500">notifications</span>
+</button>
+</header>
+<main class="pt-24 px-6 max-w-md mx-auto">
+<!-- Dashboard Welcome -->
+<section class="mb-8">
+<h2 class="font-headline text-2xl font-bold text-on-surface">Sipariş Geçmişi ve Kazanç</h2>
+<p class="text-on-surface-variant font-body mt-1">Günün özeti ve finansal performansınız.</p>
+</section>
+<!-- Summary Grid (Bento Style) -->
+<section class="grid grid-cols-2 gap-4 mb-10">
+<!-- Main Revenue Card -->
+<div class="col-span-2 bg-surface-container-lowest p-6 rounded-[24px] shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="relative z-10">
+<p class="text-on-surface-variant text-sm font-medium">Bugünkü Kazanç</p>
+<h3 class="font-headline text-3xl font-extrabold text-primary mt-1 tracking-tight">₺14.250,50</h3>
+<div class="flex items-center gap-2 mt-4">
+<span class="text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-lg text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> +12%
+                        </span>
+<span class="text-on-surface-variant text-xs">Düne göre</span>
+</div>
+</div>
+<!-- Mini Sparkline Placeholder -->
+<div class="absolute bottom-0 right-0 left-0 h-12 flex items-end px-2 opacity-20">
+<div class="w-full h-8 bg-gradient-to-t from-primary to-transparent rounded-t-lg" style="clip-path: polygon(0 80%, 10% 40%, 20% 60%, 30% 20%, 40% 50%, 50% 10%, 60% 70%, 70% 30%, 80% 90%, 90% 40%, 100% 60%, 100% 100%, 0% 100%);"></div>
+</div>
+</div>
+<!-- Total Orders -->
+<div class="bg-surface-container-lowest p-5 rounded-[24px] shadow-sm">
+<span class="material-symbols-outlined text-primary mb-2">restaurant</span>
+<p class="text-on-surface-variant text-xs font-medium">Toplam Sipariş</p>
+<p class="font-headline text-xl font-bold text-on-surface">42</p>
+</div>
+<!-- Cancelled Orders -->
+<div class="bg-surface-container-lowest p-5 rounded-[24px] shadow-sm border-l-4 border-error/10">
+<span class="material-symbols-outlined text-error mb-2">cancel_presentation</span>
+<p class="text-on-surface-variant text-xs font-medium">İptal Edilen</p>
+<p class="font-headline text-xl font-bold text-on-surface">3</p>
+</div>
+</section>
+<!-- Order History List -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline text-lg font-bold text-on-surface">Geçmiş Siparişler</h3>
+<button class="text-primary text-sm font-semibold hover:underline">Tümünü Gör</button>
+</div>
+<div class="space-y-4">
+<!-- Order Item 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-[24px] flex items-center justify-between transition-all active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-low rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-zinc-400">receipt_long</span>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface text-base">#DM-8942</p>
+<p class="text-on-surface-variant text-xs font-body">Bugün, 14:20</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline font-bold text-on-surface">₺345,00</p>
+<span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 uppercase tracking-wider">Teslim Edildi</span>
+</div>
+</div>
+<!-- Order Item 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-[24px] flex items-center justify-between transition-all active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-low rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-zinc-400">receipt_long</span>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface text-base">#DM-8941</p>
+<p class="text-on-surface-variant text-xs font-body">Bugün, 13:45</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline font-bold text-zinc-400 line-through">₺120,50</p>
+<span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-error/10 text-error uppercase tracking-wider">İptal Edildi</span>
+</div>
+</div>
+<!-- Order Item 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-[24px] flex items-center justify-between transition-all active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-low rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-zinc-400">receipt_long</span>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface text-base">#DM-8940</p>
+<p class="text-on-surface-variant text-xs font-body">Bugün, 12:10</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline font-bold text-on-surface">₺890,00</p>
+<span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 uppercase tracking-wider">Teslim Edildi</span>
+</div>
+</div>
+<!-- Order Item 4 -->
+<div class="bg-surface-container-lowest p-5 rounded-[24px] flex items-center justify-between transition-all active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-low rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-zinc-400">receipt_long</span>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface text-base">#DM-8939</p>
+<p class="text-on-surface-variant text-xs font-body">Dün, 21:55</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline font-bold text-on-surface">₺1.240,00</p>
+<span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 uppercase tracking-wider">Teslim Edildi</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl rounded-t-[32px] z-50 shadow-[0_-4px_24px_rgba(0,0,0,0.04)]">
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-5 py-2 hover:text-orange-500 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">home_app_logo</span>
+<span class="text-[11px] font-inter font-medium mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400 rounded-2xl px-5 py-2 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="text-[11px] font-inter font-medium mt-1">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-5 py-2 hover:text-orange-500 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[11px] font-inter font-medium mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

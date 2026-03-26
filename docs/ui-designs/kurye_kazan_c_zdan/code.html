@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#f5f6f7",
+              "secondary-dim": "#902c2b",
+              "on-surface-variant": "#595c5d",
+              "on-background": "#2c2f30",
+              "secondary-fixed-dim": "#ffafaa",
+              "tertiary": "#843d98",
+              "on-secondary": "#ffefee",
+              "error-container": "#fb5151",
+              "surface-dim": "#d1d5d7",
+              "secondary-fixed": "#ffc3bf",
+              "tertiary-fixed-dim": "#dd8eef",
+              "primary-fixed": "#ff784c",
+              "secondary": "#a03836",
+              "on-primary-container": "#460f00",
+              "surface-container": "#e6e8ea",
+              "secondary-container": "#ffc3bf",
+              "on-primary-fixed-variant": "#561500",
+              "outline-variant": "#abadae",
+              "background": "#f5f6f7",
+              "on-secondary-fixed": "#6a0f13",
+              "primary": "#a83100",
+              "on-tertiary": "#ffeefd",
+              "on-error": "#ffefee",
+              "surface-container-high": "#e0e3e4",
+              "primary-fixed-dim": "#ff5d23",
+              "on-secondary-container": "#852424",
+              "surface-container-highest": "#dadddf",
+              "inverse-primary": "#ff5717",
+              "inverse-on-surface": "#9b9d9e",
+              "outline": "#757778",
+              "surface-container-low": "#eff1f2",
+              "on-primary": "#ffefeb",
+              "on-primary-fixed": "#000000",
+              "surface-variant": "#dadddf",
+              "on-tertiary-fixed": "#3b004c",
+              "on-error-container": "#570008",
+              "error": "#b31b25",
+              "error-dim": "#9f0519",
+              "surface-tint": "#a83100",
+              "inverse-surface": "#0c0f10",
+              "on-secondary-fixed-variant": "#912d2c",
+              "on-tertiary-fixed-variant": "#651d79",
+              "primary-dim": "#942a00",
+              "on-surface": "#2c2f30",
+              "on-tertiary-container": "#5b1170",
+              "tertiary-container": "#eb9bfe",
+              "surface": "#f5f6f7",
+              "primary-container": "#ff784c",
+              "tertiary-dim": "#77308b",
+              "tertiary-fixed": "#eb9bfe",
+              "surface-container-lowest": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-effect { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .chart-bar-glow { box-shadow: 0 4px 12px rgba(168, 49, 0, 0.15); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased select-none">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl shadow-sm shadow-orange-900/5 flex items-center justify-between px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high border-2 border-primary/10">
+<img alt="Kurye Profil" class="w-full h-full object-cover" data-alt="close-up portrait of a friendly professional courier wearing a modern uniform with a clean urban background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNsPSwTnUoQKtrFuOQl46zMUe57MyMAyYSFN0Usl8ixbS077S1bL5uGjWpae3LSXJ8ldz0kPuHSAB5wrycbnle7JYWkSD9xwf1hCLLeaBvjlhviJ0ImrkJF2ecR3mSlrWyAT0gKfirAH7nqrTrcwseEbWo9jqJmrzESN4FW6mhHmfAwfCROB1yNYeiSGNQ9QJdsQWlghWJy5rI24_DjQvdBfUHthr165r8Aq_aAcE5f8y0KTZk1H7zx2-wlMUkMMxumsGZBkZ-44FN"/>
+</div>
+<h1 class="font-headline text-xl font-semibold tracking-tight text-orange-600 dark:text-orange-500">Cüzdanım</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-zinc-500 dark:text-zinc-400">notifications</span>
+</button>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-lg mx-auto space-y-8">
+<!-- Balance Card -->
+<section class="relative overflow-hidden bg-gradient-to-br from-primary to-primary-container rounded-[32px] p-8 shadow-2xl shadow-primary/20 text-on-primary">
+<!-- Decorative Background Element -->
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+<div class="relative z-10 flex flex-col items-center text-center">
+<span class="text-on-primary/70 font-label font-medium tracking-wider text-sm">GÜNCEL BAKİYE (TL)</span>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-headline text-5xl font-extrabold tracking-tight">4.850,50</span>
+<span class="text-2xl font-bold opacity-80">₺</span>
+</div>
+<button class="mt-8 w-full py-4 bg-white text-primary font-bold rounded-2xl shadow-xl shadow-black/10 active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+                    Para Çek
+                </button>
+</div>
+</section>
+<!-- Earnings Chart Section -->
+<section class="space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="font-headline text-xl font-bold text-on-surface">Haftalık Kazanç</h2>
+<div class="flex items-center gap-2 text-primary font-semibold text-sm">
+<span>Bu Hafta</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-[24px] p-6">
+<div class="h-48 flex items-end justify-between gap-2 px-2">
+<!-- Monday -->
+<div class="flex flex-col items-center gap-3 w-full">
+<div class="w-full bg-surface-container-high rounded-t-lg h-[40%] transition-all"></div>
+<span class="text-[10px] font-bold text-on-surface-variant">Pzt</span>
+</div>
+<!-- Tuesday -->
+<div class="flex flex-col items-center gap-3 w-full">
+<div class="w-full bg-surface-container-high rounded-t-lg h-[65%] transition-all"></div>
+<span class="text-[10px] font-bold text-on-surface-variant">Sal</span>
+</div>
+<!-- Wednesday -->
+<div class="flex flex-col items-center gap-3 w-full">
+<div class="w-full bg-surface-container-high rounded-t-lg h-[50%] transition-all"></div>
+<span class="text-[10px] font-bold text-on-surface-variant">Çar</span>
+</div>
+<!-- Thursday (Today) -->
+<div class="flex flex-col items-center gap-3 w-full">
+<div class="w-full bg-primary rounded-t-lg h-[85%] chart-bar-glow transition-all relative">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-white text-[10px] px-2 py-1 rounded font-bold">1.2k</div>
+</div>
+<span class="text-[10px] font-bold text-primary">Per</span>
+</div>
+<!-- Friday -->
+<div class="flex flex-col items-center gap-3 w-full">
+<div class="w-full bg-surface-container-high rounded-t-lg h-[30%] transition-all"></div>
+<span class="text-[10px] font-bold text-on-surface-variant">Cum</span>
+</div>
+<!-- Saturday -->
+<div class="flex flex-col items-center gap-3 w-full">
+<div class="w-full bg-surface-container-high rounded-t-lg h-[45%] transition-all"></div>
+<span class="text-[10px] font-bold text-on-surface-variant">Cmt</span>
+</div>
+<!-- Sunday -->
+<div class="flex flex-col items-center gap-3 w-full">
+<div class="w-full bg-surface-container-high rounded-t-lg h-[20%] transition-all"></div>
+<span class="text-[10px] font-bold text-on-surface-variant">Paz</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Trips Section -->
+<section class="space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="font-headline text-xl font-bold text-on-surface">Son Teslimatlar</h2>
+<button class="text-primary font-semibold text-sm">Tümünü Gör</button>
+</div>
+<div class="space-y-4">
+<!-- Trip Card 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-[24px] flex flex-col gap-4 shadow-sm">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-sm">Lezzet Sarayı</span>
+<span class="text-[11px] text-on-surface-variant">Bugün, 14:20</span>
+</div>
+</div>
+<span class="font-headline font-bold text-on-surface">+45,00 ₺</span>
+</div>
+<div class="flex items-center gap-4 py-2 border-l-2 border-dashed border-outline-variant/30 ml-4 pl-4 relative">
+<div class="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-primary"></div>
+<div class="absolute -left-[5px] bottom-0 w-2 h-2 rounded-full bg-on-surface"></div>
+<div class="flex flex-col gap-2 w-full">
+<p class="text-[13px] text-on-surface-variant truncate">Beşiktaş Cad. No:12</p>
+<p class="text-[13px] font-medium text-on-surface truncate">Ihlamurdere Sok. No:45</p>
+</div>
+<div class="shrink-0 flex flex-col items-end">
+<span class="text-[11px] font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">3.2 km</span>
+</div>
+</div>
+</div>
+<!-- Trip Card 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-[24px] flex flex-col gap-4 shadow-sm">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">shopping_basket</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-sm">Market Express</span>
+<span class="text-[11px] text-on-surface-variant">Bugün, 12:45</span>
+</div>
+</div>
+<span class="font-headline font-bold text-on-surface">+32,50 ₺</span>
+</div>
+<div class="flex items-center gap-4 py-2 border-l-2 border-dashed border-outline-variant/30 ml-4 pl-4 relative">
+<div class="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-primary"></div>
+<div class="absolute -left-[5px] bottom-0 w-2 h-2 rounded-full bg-on-surface"></div>
+<div class="flex flex-col gap-2 w-full">
+<p class="text-[13px] text-on-surface-variant truncate">Nişantaşı Mah. Defne Sok.</p>
+<p class="text-[13px] font-medium text-on-surface truncate">Valikonağı Cad. No:8</p>
+</div>
+<div class="shrink-0 flex flex-col items-end">
+<span class="text-[11px] font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">1.8 km</span>
+</div>
+</div>
+</div>
+<!-- Trip Card 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-[24px] flex flex-col gap-4 shadow-sm">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-sm">Burger Station</span>
+<span class="text-[11px] text-on-surface-variant">Bugün, 11:15</span>
+</div>
+</div>
+<span class="font-headline font-bold text-on-surface">+68,20 ₺</span>
+</div>
+<div class="flex items-center gap-4 py-2 border-l-2 border-dashed border-outline-variant/30 ml-4 pl-4 relative">
+<div class="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-primary"></div>
+<div class="absolute -left-[5px] bottom-0 w-2 h-2 rounded-full bg-on-surface"></div>
+<div class="flex flex-col gap-2 w-full">
+<p class="text-[13px] text-on-surface-variant truncate">Mecidiyeköy İş Merk.</p>
+<p class="text-[13px] font-medium text-on-surface truncate">Gülbağ Sok. No:112</p>
+</div>
+<div class="shrink-0 flex flex-col items-end">
+<span class="text-[11px] font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">5.4 km</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl rounded-t-[32px] z-50 shadow-[0_-4px_24px_rgba(0,0,0,0.04)]">
+<div class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-5 py-2 hover:text-orange-500 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">home_app_logo</span>
+<span class="text-[11px] font-inter font-medium mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-5 py-2 hover:text-orange-500 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[11px] font-inter font-medium mt-1">Orders</span>
+</div>
+<!-- Active Tab: Profile (Wallet often sits under profile) -->
+<div class="flex flex-col items-center justify-center bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400 rounded-2xl px-5 py-2 active:scale-90 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-[11px] font-inter font-medium mt-1">Profile</span>
+</div>
+</nav>
+</body></html>

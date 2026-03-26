@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Acil Durum Bildir - Digital Maître D’</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#f5f6f7",
+              "secondary-dim": "#902c2b",
+              "on-surface-variant": "#595c5d",
+              "on-background": "#2c2f30",
+              "secondary-fixed-dim": "#ffafaa",
+              "tertiary": "#843d98",
+              "on-secondary": "#ffefee",
+              "error-container": "#fb5151",
+              "surface-dim": "#d1d5d7",
+              "secondary-fixed": "#ffc3bf",
+              "tertiary-fixed-dim": "#dd8eef",
+              "primary-fixed": "#ff784c",
+              "secondary": "#a03836",
+              "on-primary-container": "#460f00",
+              "surface-container": "#e6e8ea",
+              "secondary-container": "#ffc3bf",
+              "on-primary-fixed-variant": "#561500",
+              "outline-variant": "#abadae",
+              "background": "#f5f6f7",
+              "on-secondary-fixed": "#6a0f13",
+              "primary": "#a83100",
+              "on-tertiary": "#ffeefd",
+              "on-error": "#ffefee",
+              "surface-container-high": "#e0e3e4",
+              "primary-fixed-dim": "#ff5d23",
+              "on-secondary-container": "#852424",
+              "surface-container-highest": "#dadddf",
+              "inverse-primary": "#ff5717",
+              "inverse-on-surface": "#9b9d9e",
+              "outline": "#757778",
+              "surface-container-low": "#eff1f2",
+              "on-primary": "#ffefeb",
+              "on-primary-fixed": "#000000",
+              "surface-variant": "#dadddf",
+              "on-tertiary-fixed": "#3b004c",
+              "on-error-container": "#570008",
+              "error": "#b31b25",
+              "error-dim": "#9f0519",
+              "surface-tint": "#a83100",
+              "inverse-surface": "#0c0f10",
+              "on-secondary-fixed-variant": "#912d2c",
+              "on-tertiary-fixed-variant": "#651d79",
+              "primary-dim": "#942a00",
+              "on-surface": "#2c2f30",
+              "on-tertiary-container": "#5b1170",
+              "tertiary-container": "#eb9bfe",
+              "surface": "#f5f6f7",
+              "primary-container": "#ff784c",
+              "tertiary-dim": "#77308b",
+              "tertiary-fixed": "#eb9bfe",
+              "surface-container-lowest": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .bg-glass {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface">
+<!-- Active Delivery Background Layer (Courier Context) -->
+<main class="min-h-screen pb-32">
+<!-- Top App Bar (Shared Component Logic) -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl shadow-sm shadow-orange-900/5 flex items-center justify-between px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional portrait of a delivery courier smiling confidently wearing a modern tech-fabric uniform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWwE2HGj1yU_4uyEdt-nVDR2utOwohGNkdIEdJsXmaPNczbSLZQrL5tK8zOg-ZkXd-AcbFHT92Fj1Isvx92yv0O1u7719MCFUJ37rzwnbtrvDNFtoYYDNwmaP1yakADRqo6GwzvV3p6stBjFdsnFsD7ivj3aJOUAEXrsp5xSA8Udds47eJZmHwyhWE_DWW2llFfy0a9MlluWDQmm7wQ5dZQrDx6qSd2NVNch1XznBBz3ov-Re_6Xh2GB_7Cxd7ugDgwNmH-PruRAzr"/>
+</div>
+<h1 class="font-headline text-xl font-semibold tracking-tight text-orange-600">Digital Maître D’</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-zinc-100 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-zinc-500">notifications</span>
+</button>
+</header>
+<!-- Background Content: Delivery Map & Task -->
+<div class="pt-20 px-4 space-y-6">
+<!-- Map Card -->
+<div class="w-full h-80 bg-surface-container-low rounded-[32px] overflow-hidden relative shadow-sm">
+<img class="w-full h-full object-cover opacity-80" data-alt="Modern satellite navigation view of city streets with a blue GPS route line highlighted on the pavement" data-location="Istanbul" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpd93WJWsAsxCwhFyo4Ckq8IZQx0Z_psktPezOwJYkFEhPyxH4S6FLQH5Gv9gxe7Rs-RjNuJJYzyuOpgm5iU2PZjUJR4DS8ft5O4kIZJw8Bawq7HCBJS7okyFxgGj13MI3q_fKF3xw84plDQ26A1V2yVg8jbpPE3dBz0Zh_zWcNXVCr74M30HkEnj8u8TSjwDor-vwAgZnb0lV_uU1I3_hOxAaYLBFHRsowPfBbLTLblt6zG3_Oyuez5g8v44wFcmKRdcm-YO5KkEt"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 p-4 bg-white/90 backdrop-blur-md rounded-2xl flex items-center justify-between">
+<div>
+<p class="text-[11px] font-bold text-orange-600 uppercase tracking-widest">Teslimat Adresi</p>
+<p class="text-base font-semibold leading-tight">Nişantaşı, Abdi İpekçi Cd. No: 42</p>
+</div>
+<div class="bg-orange-50 p-2 rounded-xl">
+<span class="material-symbols-outlined text-orange-600">navigation</span>
+</div>
+</div>
+</div>
+<!-- Task Detail -->
+<div class="bg-secondary-container p-6 rounded-[32px] flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-secondary text-3xl">restaurant</span>
+</div>
+<div>
+<h2 class="font-headline font-bold text-on-secondary-container">Gurme Burger Evi</h2>
+<p class="text-sm text-on-secondary-container/80">Sipariş: #TR-8821</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold uppercase tracking-tighter opacity-70">Süre</p>
+<p class="text-xl font-headline font-extrabold text-secondary">08:42</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Modal Backdrop -->
+<div class="fixed inset-0 bg-on-background/40 backdrop-blur-sm z-[60]"></div>
+<!-- Emergency Bottom Sheet -->
+<div class="fixed bottom-0 left-0 w-full z-[70] transition-transform duration-300 transform translate-y-0">
+<div class="bg-white rounded-t-[40px] shadow-[0_-8px_40px_rgba(0,0,0,0.12)] max-w-2xl mx-auto overflow-hidden">
+<!-- Handle -->
+<div class="flex justify-center pt-3 pb-2">
+<div class="w-12 h-1.5 bg-surface-container-highest rounded-full"></div>
+</div>
+<!-- Header -->
+<div class="px-8 pt-4 pb-6">
+<h3 class="font-headline text-2xl font-extrabold text-on-background tracking-tight">Acil Durum Bildir</h3>
+<p class="text-on-surface-variant mt-1 font-medium">Lütfen yaşadığınız sorunu seçin. Ekibimiz anında müdahale edecektir.</p>
+</div>
+<!-- Options Grid (Bento Style) -->
+<div class="px-6 pb-8 grid grid-cols-2 gap-4">
+<!-- Option 1 -->
+<button class="group flex flex-col items-start p-5 bg-surface-container-low rounded-[24px] text-left transition-all active:scale-95 hover:bg-white hover:ring-2 hover:ring-orange-600/10">
+<div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center mb-4 shadow-sm group-hover:bg-orange-50 transition-colors">
+<span class="material-symbols-outlined text-orange-600" style="font-variation-settings: 'FILL' 1;">person_off</span>
+</div>
+<span class="text-base font-bold text-on-surface leading-tight">Müşteriye Ulaşılamıyor</span>
+</button>
+<!-- Option 2 -->
+<button class="group flex flex-col items-start p-5 bg-surface-container-low rounded-[24px] text-left transition-all active:scale-95 hover:bg-white hover:ring-2 hover:ring-orange-600/10">
+<div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center mb-4 shadow-sm group-hover:bg-orange-50 transition-colors">
+<span class="material-symbols-outlined text-orange-600" style="font-variation-settings: 'FILL' 1;">no_crash</span>
+</div>
+<span class="text-base font-bold text-on-surface leading-tight">Araç Arızası</span>
+</button>
+<!-- Option 3 (Full Width Highlight) -->
+<button class="col-span-2 group flex items-center gap-6 p-6 bg-error/5 rounded-[24px] text-left transition-all active:scale-95 border-2 border-transparent hover:border-error/20">
+<div class="w-14 h-14 rounded-2xl bg-error flex items-center justify-center shadow-lg shadow-error/20">
+<span class="material-symbols-outlined text-white text-3xl" style="font-variation-settings: 'FILL' 1;">emergency</span>
+</div>
+<div>
+<span class="text-lg font-extrabold text-error leading-tight block">Kaza / Acil Durum</span>
+<span class="text-sm text-error/70 font-medium">Öncelikli müdahale gerektirir</span>
+</div>
+</button>
+<!-- Option 4 -->
+<button class="group flex flex-col items-start p-5 bg-surface-container-low rounded-[24px] text-left transition-all active:scale-95 hover:bg-white hover:ring-2 hover:ring-orange-600/10">
+<div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center mb-4 shadow-sm group-hover:bg-orange-50 transition-colors">
+<span class="material-symbols-outlined text-orange-600" style="font-variation-settings: 'FILL' 1;">wrong_location</span>
+</div>
+<span class="text-base font-bold text-on-surface leading-tight">Adres Hatalı</span>
+</button>
+<!-- Option 5 -->
+<button class="group flex flex-col items-start p-5 bg-surface-container-low rounded-[24px] text-left transition-all active:scale-95 hover:bg-white hover:ring-2 hover:ring-orange-600/10">
+<div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center mb-4 shadow-sm group-hover:bg-orange-50 transition-colors">
+<span class="material-symbols-outlined text-orange-600" style="font-variation-settings: 'FILL' 1;">more_horiz</span>
+</div>
+<span class="text-base font-bold text-on-surface leading-tight">Diğer Sorunlar</span>
+</button>
+</div>
+<!-- Sticky Action Bar -->
+<div class="px-6 pb-10 pt-4 bg-surface-container-low/50 backdrop-blur-md">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-5 rounded-[24px] font-headline font-bold text-lg flex items-center justify-center gap-3 shadow-xl shadow-primary/20 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+                    Canlı Destek Ara
+                </button>
+<button class="w-full mt-4 py-3 text-on-surface-variant font-semibold text-center hover:text-on-surface transition-colors">
+                    Vazgeç
+                </button>
+</div>
+</div>
+</div>
+<!-- Hidden Bottom Nav for Screen Relevance Check -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl rounded-t-[32px] z-40 shadow-[0_-4px_24px_rgba(0,0,0,0.04)] hidden md:flex">
+<div class="flex flex-col items-center justify-center bg-orange-50 text-orange-600 rounded-2xl px-5 py-2">
+<span class="material-symbols-outlined">home_app_logo</span>
+<span class="text-[11px] font-medium">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 px-5 py-2">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[11px] font-medium">Orders</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 px-5 py-2">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[11px] font-medium">Profile</span>
+</div>
+</nav>
+</body></html>

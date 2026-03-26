@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Restoran Profili ve Çalışma Saatleri</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#f5f6f7",
+              "secondary-dim": "#902c2b",
+              "on-surface-variant": "#595c5d",
+              "on-background": "#2c2f30",
+              "secondary-fixed-dim": "#ffafaa",
+              "tertiary": "#843d98",
+              "on-secondary": "#ffefee",
+              "error-container": "#fb5151",
+              "surface-dim": "#d1d5d7",
+              "secondary-fixed": "#ffc3bf",
+              "tertiary-fixed-dim": "#dd8eef",
+              "primary-fixed": "#ff784c",
+              "secondary": "#a03836",
+              "on-primary-container": "#460f00",
+              "surface-container": "#e6e8ea",
+              "secondary-container": "#ffc3bf",
+              "on-primary-fixed-variant": "#561500",
+              "outline-variant": "#abadae",
+              "background": "#f5f6f7",
+              "on-secondary-fixed": "#6a0f13",
+              "primary": "#a83100",
+              "on-tertiary": "#ffeefd",
+              "on-error": "#ffefee",
+              "surface-container-high": "#e0e3e4",
+              "primary-fixed-dim": "#ff5d23",
+              "on-secondary-container": "#852424",
+              "surface-container-highest": "#dadddf",
+              "inverse-primary": "#ff5717",
+              "inverse-on-surface": "#9b9d9e",
+              "outline": "#757778",
+              "surface-container-low": "#eff1f2",
+              "on-primary": "#ffefeb",
+              "on-primary-fixed": "#000000",
+              "surface-variant": "#dadddf",
+              "on-tertiary-fixed": "#3b004c",
+              "on-error-container": "#570008",
+              "error": "#b31b25",
+              "error-dim": "#9f0519",
+              "surface-tint": "#a83100",
+              "inverse-surface": "#0c0f10",
+              "on-secondary-fixed-variant": "#912d2c",
+              "on-tertiary-fixed-variant": "#651d79",
+              "primary-dim": "#942a00",
+              "on-surface": "#2c2f30",
+              "on-tertiary-container": "#5b1170",
+              "tertiary-container": "#eb9bfe",
+              "surface": "#f5f6f7",
+              "primary-container": "#ff784c",
+              "tertiary-dim": "#77308b",
+              "tertiary-fixed": "#eb9bfe",
+              "surface-container-lowest": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        background-color: #f5f6f7;
+        color: #2c2f30;
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl shadow-sm shadow-orange-900/5 flex items-center justify-between px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="top-down shot of high-end restaurant plating with elegant table setting and warm evening lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXnS217BiLZoVloL01I1S-mk_e6gcbBObRQ7ba3FgstrRWC2AINQCTCZoYzFqz5_YJzUDi30s0Ld_jCgSAgpkKBi---hMfkVzIMoMgr11Z_ZX1YpNkGYJind1bZmbRRGw-A_oIQmUbkbrUzjEmJcMawblSgx424JjB6bvKkfDG679AzE5U4uZIJghtM18JO_UNVFapBXQkLNTAuJFRHOXpRaY1dOZEXLrdRWLH--F_-zoRgRsERs7db2ERX3igF3VRXT4uIHz78Gza"/>
+</div>
+<h1 class="font-headline text-xl font-semibold tracking-tight text-orange-600 dark:text-orange-500">
+                Digital Maître D’
+            </h1>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors active:scale-95 duration-200 text-zinc-500 dark:text-zinc-400">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-2xl mx-auto space-y-8">
+<!-- Hero Section / Title -->
+<section class="space-y-2">
+<h2 class="font-headline text-[2rem] font-bold leading-tight text-on-surface">Restoran Profili</h2>
+<p class="text-on-surface-variant text-lg">İşletmenizin detaylarını ve çalışma saatlerini buradan güncelleyebilirsiniz.</p>
+</section>
+<!-- Profile Form Card -->
+<div class="bg-surface-container-lowest rounded-[32px] p-8 space-y-8 shadow-sm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Restaurant Name -->
+<div class="space-y-2 col-span-full">
+<label class="block text-sm font-medium text-on-surface-variant px-1">Restoran Adı</label>
+<input class="w-full bg-surface-container-low border-0 rounded-xl px-5 py-4 text-on-surface focus:bg-white focus:ring-2 focus:ring-primary/20 transition-all outline-none" type="text" value="Lezzet Atölyesi Gastronomi"/>
+</div>
+<!-- Phone Number -->
+<div class="space-y-2">
+<label class="block text-sm font-medium text-on-surface-variant px-1">Telefon Numarası</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant material-symbols-outlined text-[20px]" data-icon="call">call</span>
+<input class="w-full bg-surface-container-low border-0 rounded-xl pl-12 pr-5 py-4 text-on-surface focus:bg-white focus:ring-2 focus:ring-primary/20 transition-all outline-none" type="tel" value="+90 (555) 123 45 67"/>
+</div>
+</div>
+<!-- Min Order Amount -->
+<div class="space-y-2">
+<label class="block text-sm font-medium text-on-surface-variant px-1">Minimum Paket Tutarı</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-medium">₺</span>
+<input class="w-full bg-surface-container-low border-0 rounded-xl pl-12 pr-5 py-4 text-on-surface focus:bg-white focus:ring-2 focus:ring-primary/20 transition-all outline-none" type="number" value="250"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Working Hours Section -->
+<section class="space-y-6">
+<div class="flex items-end justify-between px-2">
+<h3 class="font-headline text-2xl font-semibold text-on-surface">Çalışma Saatleri</h3>
+<span class="text-sm font-medium text-primary">Tüm Haftayı Güncelle</span>
+</div>
+<div class="bg-surface-container-low rounded-[32px] p-2 space-y-1">
+<!-- Monday -->
+<div class="bg-white rounded-2xl p-4 flex items-center justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center text-primary font-bold">Pt</div>
+<span class="font-semibold text-on-surface">Pazartesi</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center bg-surface-container-low rounded-lg px-3 py-2 gap-2">
+<span class="text-sm font-medium">10:00</span>
+<span class="text-on-surface-variant">-</span>
+<span class="text-sm font-medium">22:00</span>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative cursor-pointer flex items-center px-1">
+<div class="w-4 h-4 bg-white rounded-full translate-x-6"></div>
+</div>
+</div>
+</div>
+<!-- Tuesday -->
+<div class="bg-white rounded-2xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center text-primary font-bold">Sa</div>
+<span class="font-semibold text-on-surface">Salı</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center bg-surface-container-low rounded-lg px-3 py-2 gap-2">
+<span class="text-sm font-medium">10:00</span>
+<span class="text-on-surface-variant">-</span>
+<span class="text-sm font-medium">22:00</span>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative cursor-pointer flex items-center px-1">
+<div class="w-4 h-4 bg-white rounded-full translate-x-6"></div>
+</div>
+</div>
+</div>
+<!-- Wednesday -->
+<div class="bg-white rounded-2xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center text-primary font-bold">Çş</div>
+<span class="font-semibold text-on-surface">Çarşamba</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center bg-surface-container-low rounded-lg px-3 py-2 gap-2">
+<span class="text-sm font-medium">10:00</span>
+<span class="text-on-surface-variant">-</span>
+<span class="text-sm font-medium">22:00</span>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative cursor-pointer flex items-center px-1">
+<div class="w-4 h-4 bg-white rounded-full translate-x-6"></div>
+</div>
+</div>
+</div>
+<!-- Thursday -->
+<div class="bg-white rounded-2xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center text-primary font-bold">Pş</div>
+<span class="font-semibold text-on-surface">Perşembe</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center bg-surface-container-low rounded-lg px-3 py-2 gap-2">
+<span class="text-sm font-medium">10:00</span>
+<span class="text-on-surface-variant">-</span>
+<span class="text-sm font-medium">22:00</span>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative cursor-pointer flex items-center px-1">
+<div class="w-4 h-4 bg-white rounded-full translate-x-6"></div>
+</div>
+</div>
+</div>
+<!-- Friday -->
+<div class="bg-white rounded-2xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center text-primary font-bold">Cu</div>
+<span class="font-semibold text-on-surface">Cuma</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center bg-surface-container-low rounded-lg px-3 py-2 gap-2">
+<span class="text-sm font-medium">10:00</span>
+<span class="text-on-surface-variant">-</span>
+<span class="text-sm font-medium">23:30</span>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative cursor-pointer flex items-center px-1">
+<div class="w-4 h-4 bg-white rounded-full translate-x-6"></div>
+</div>
+</div>
+</div>
+<!-- Saturday -->
+<div class="bg-white rounded-2xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center text-primary font-bold">Ct</div>
+<span class="font-semibold text-on-surface">Cumartesi</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center bg-surface-container-low rounded-lg px-3 py-2 gap-2">
+<span class="text-sm font-medium">11:00</span>
+<span class="text-on-surface-variant">-</span>
+<span class="text-sm font-medium">23:30</span>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative cursor-pointer flex items-center px-1">
+<div class="w-4 h-4 bg-white rounded-full translate-x-6"></div>
+</div>
+</div>
+</div>
+<!-- Sunday -->
+<div class="bg-surface-container-high/50 rounded-2xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-4 opacity-60">
+<div class="w-12 h-12 bg-zinc-200 rounded-xl flex items-center justify-center text-zinc-500 font-bold">Pa</div>
+<span class="font-semibold text-zinc-500">Pazar</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-sm font-medium text-zinc-400">Kapalı</span>
+<div class="w-12 h-6 bg-zinc-300 rounded-full relative cursor-pointer flex items-center px-1">
+<div class="w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Save Button -->
+<div class="pt-4">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-5 rounded-2xl font-bold text-lg shadow-lg shadow-primary/20 active:scale-95 transition-all">
+                Değişiklikleri Kaydet
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl rounded-t-[32px] z-50 shadow-[0_-4px_24px_rgba(0,0,0,0.04)]">
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-5 py-2 hover:text-orange-500 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home_app_logo">home_app_logo</span>
+<span class="text-[11px] font-inter font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-5 py-2 hover:text-orange-500 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="receipt_long">receipt_long</span>
+<span class="text-[11px] font-inter font-medium">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400 rounded-2xl px-5 py-2 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-[11px] font-inter font-medium">Profile</span>
+</a>
+</nav>
+</body></html>

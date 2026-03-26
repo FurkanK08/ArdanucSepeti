@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kurye Profil Ayarları</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#f5f6f7",
+              "secondary-dim": "#902c2b",
+              "on-surface-variant": "#595c5d",
+              "on-background": "#2c2f30",
+              "secondary-fixed-dim": "#ffafaa",
+              "tertiary": "#843d98",
+              "on-secondary": "#ffefee",
+              "error-container": "#fb5151",
+              "surface-dim": "#d1d5d7",
+              "secondary-fixed": "#ffc3bf",
+              "tertiary-fixed-dim": "#dd8eef",
+              "primary-fixed": "#ff784c",
+              "secondary": "#a03836",
+              "on-primary-container": "#460f00",
+              "surface-container": "#e6e8ea",
+              "secondary-container": "#ffc3bf",
+              "on-primary-fixed-variant": "#561500",
+              "outline-variant": "#abadae",
+              "background": "#f5f6f7",
+              "on-secondary-fixed": "#6a0f13",
+              "primary": "#a83100",
+              "on-tertiary": "#ffeefd",
+              "on-error": "#ffefee",
+              "surface-container-high": "#e0e3e4",
+              "primary-fixed-dim": "#ff5d23",
+              "on-secondary-container": "#852424",
+              "surface-container-highest": "#dadddf",
+              "inverse-primary": "#ff5717",
+              "inverse-on-surface": "#9b9d9e",
+              "outline": "#757778",
+              "surface-container-low": "#eff1f2",
+              "on-primary": "#ffefeb",
+              "on-primary-fixed": "#000000",
+              "surface-variant": "#dadddf",
+              "on-tertiary-fixed": "#3b004c",
+              "on-error-container": "#570008",
+              "error": "#b31b25",
+              "error-dim": "#9f0519",
+              "surface-tint": "#a83100",
+              "inverse-surface": "#0c0f10",
+              "on-secondary-fixed-variant": "#912d2c",
+              "on-tertiary-fixed-variant": "#651d79",
+              "primary-dim": "#942a00",
+              "on-surface": "#2c2f30",
+              "on-tertiary-container": "#5b1170",
+              "tertiary-container": "#eb9bfe",
+              "surface": "#f5f6f7",
+              "primary-container": "#ff784c",
+              "tertiary-dim": "#77308b",
+              "tertiary-fixed": "#eb9bfe",
+              "surface-container-lowest": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl shadow-sm shadow-orange-900/5 flex items-center justify-between px-6 py-4">
+<div class="flex items-center gap-3">
+<button class="active:scale-95 duration-200 text-zinc-500 hover:bg-zinc-100 p-2 rounded-full">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-orange-600 font-plus-jakarta text-xl font-semibold tracking-tight">Kurye Profil Ayarları</h1>
+</div>
+<button class="active:scale-95 duration-200 text-zinc-500 hover:bg-zinc-100 p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="pt-24 px-6 space-y-8 max-w-md mx-auto">
+<!-- Profile Avatar Section -->
+<section class="flex flex-col items-center justify-center space-y-4">
+<div class="relative">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-surface-container-lowest shadow-sm">
+<img alt="Kurye Profil Fotoğrafı" class="w-full h-full object-cover" data-alt="Close up portrait of a friendly man with a warm smile, outdoor natural lighting, soft background blur, professional headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7BD8DogiJfv3AYKolxbyVgR34ogCMrIAPheWTU90NNsxz_ZCIBnkUyDtrjiUA1W-RuvukJuR8_MkT4TxR53jDd1gYzM1PlfgWjSZ56k5BT10vOPjUhDdeMAjfyhXZY0w4Vq0W012fqjicIQfQMqeygs_npxHFEZ2RDwkPsmH43hblDNqTtuRq6HmyHmHP0UHEuxiqKsUedlnY3CB_jpwkFtAgaWm-YTcNSWqdmkvPCrXTGBWB-5wIFRUj6XEP1v7mfH9LPrC0lzxs"/>
+</div>
+<button class="absolute bottom-1 right-1 bg-primary text-on-primary p-2 rounded-full shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<div class="text-center">
+<h2 class="text-xl font-bold text-on-surface">Ahmet Yılmaz</h2>
+<p class="text-on-surface-variant text-sm font-medium">Kurye No: #88421</p>
+</div>
+</section>
+<!-- Input Fields Section -->
+<section class="space-y-6">
+<div class="space-y-2">
+<label class="text-sm font-semibold text-on-surface-variant ml-1">Ad Soyad</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all duration-200" type="text" value="Ahmet Yılmaz"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-semibold text-on-surface-variant ml-1">Telefon Numarası</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all duration-200" type="tel" value="+90 532 123 45 67"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-semibold text-on-surface-variant ml-1">Araç Plakası</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all duration-200 uppercase" type="text" value="34 ABC 123"/>
+</div>
+</div>
+</section>
+<!-- Vehicle Type Selection -->
+<section class="space-y-4">
+<label class="text-sm font-semibold text-on-surface-variant ml-1">Araç Tipi</label>
+<div class="grid grid-cols-3 gap-3">
+<!-- Motosiklet (Active) -->
+<button class="flex flex-col items-center justify-center p-4 rounded-xl bg-primary text-on-primary shadow-md active:scale-95 duration-200">
+<span class="material-symbols-outlined mb-2" style="font-variation-settings: 'FILL' 1;">motorcycle</span>
+<span class="text-xs font-semibold">Motosiklet</span>
+</button>
+<!-- Bisiklet -->
+<button class="flex flex-col items-center justify-center p-4 rounded-xl bg-surface-container-high text-on-surface-variant active:scale-95 duration-200">
+<span class="material-symbols-outlined mb-2">pedal_bike</span>
+<span class="text-xs font-semibold">Bisiklet</span>
+</button>
+<!-- Araba -->
+<button class="flex flex-col items-center justify-center p-4 rounded-xl bg-surface-container-high text-on-surface-variant active:scale-95 duration-200">
+<span class="material-symbols-outlined mb-2">directions_car</span>
+<span class="text-xs font-semibold">Araba</span>
+</button>
+</div>
+</section>
+<!-- Action Buttons -->
+<section class="pt-4 space-y-4">
+<button class="w-full py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-xl font-bold shadow-sm active:scale-[0.98] duration-200">
+                Değişiklikleri Kaydet
+            </button>
+<button class="w-full py-4 bg-secondary-container text-on-secondary-container rounded-xl font-bold flex items-center justify-center gap-2 active:scale-[0.98] duration-200">
+<span class="material-symbols-outlined">logout</span>
+                Çıkış Yap
+            </button>
+</section>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl rounded-t-[32px] shadow-[0_-4px_24px_rgba(0,0,0,0.04)] z-50">
+<a class="flex flex-col items-center justify-center text-zinc-400 px-5 py-2 hover:text-orange-500 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home_app_logo">home_app_logo</span>
+<span class="text-[11px] font-inter font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 px-5 py-2 hover:text-orange-500 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-[11px] font-inter font-medium">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-orange-50 text-orange-600 rounded-2xl px-5 py-2 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-[11px] font-inter font-medium">Profile</span>
+</a>
+</nav>
+</body></html>
