@@ -161,11 +161,11 @@ export function VendorDashboardScreen({ navigation }: any) {
           <MaterialIcons name="dashboard" size={26} color="#C2410C" />
           <Text style={styles.navTextActive}>HOME</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('StoreSettings')}>
           <MaterialIcons name="inventory" size={26} color={theme.colors.textSecondary} />
           <Text style={styles.navText}>MENU</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('OrderHistory')}>
           <MaterialIcons name="receipt-long" size={26} color={theme.colors.textSecondary} />
           <Text style={styles.navText}>HISTORY</Text>
         </TouchableOpacity>

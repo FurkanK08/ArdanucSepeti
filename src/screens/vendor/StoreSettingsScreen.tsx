@@ -135,6 +135,16 @@ export function StoreSettingsScreen({ navigation }: any) {
             <MaterialIcons name="power-settings-new" size={32} color="#FFF" />
           </View>
         </TouchableOpacity>
+
+        {/* New Edit Profile Link */}
+        <TouchableOpacity 
+          style={styles.editProfileLink}
+          onPress={() => navigation.navigate('StoreProfile')}
+        >
+          <MaterialIcons name="storefront" size={20} color={theme.colors.primary} />
+          <Text style={styles.editProfileText}>Mağaza Profili ve Saatleri Düzenle</Text>
+          <MaterialIcons name="chevron-right" size={20} color="#94A3B8" />
+        </TouchableOpacity>
       </View>
 
       {/* Content Area: Menu Inventory */}
@@ -168,7 +178,11 @@ export function StoreSettingsScreen({ navigation }: any) {
 
         {/* Floating Quick Action */}
         <View style={styles.addButtonWrapper}>
-          <TouchableOpacity style={styles.addButton} activeOpacity={0.8}>
+          <TouchableOpacity 
+            style={styles.addButton} 
+            activeOpacity={0.8}
+            onPress={() => navigation.navigate('MenuEditor')}
+          >
             <MaterialIcons name="add-circle-outline" size={20} color={theme.colors.textSecondary} />
             <Text style={styles.addButtonText}>Yeni Ürün Ekle</Text>
           </TouchableOpacity>
@@ -234,6 +248,21 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.95)',
     borderBottomWidth: 1,
     borderBottomColor: '#F1F5F9',
+  },
+  editProfileLink: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F8FAFC',
+    marginTop: 12,
+    padding: 12,
+    borderRadius: 12,
+    gap: 12,
+  },
+  editProfileText: {
+    flex: 1,
+    fontSize: 14,
+    fontWeight: '700',
+    color: theme.colors.textPrimary,
   },
   killSwitchBtn: {
     flexDirection: 'row',
