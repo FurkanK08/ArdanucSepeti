@@ -38,7 +38,7 @@ export function CourierStandbyScreen({ navigation }: any) {
           <Text style={styles.headerValue}>1.450 TL</Text>
         </View>
         <TouchableOpacity style={styles.walletBtn} onPress={() => navigation.navigate('CourierWallet')}>
-          <MaterialIcons name="account_balance_wallet" size={24} color={theme.colors.primary} />
+          <MaterialIcons name="account-balance-wallet" size={24} color={theme.colors.primary} />
         </TouchableOpacity>
       </View>
 
