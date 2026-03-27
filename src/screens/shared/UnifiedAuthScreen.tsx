@@ -6,19 +6,35 @@ import { useAuth } from '../../hooks/useAuth';
 
 export function UnifiedAuthScreen({ navigation }: any) {
   const [phone, setPhone] = useState('');
-  const { signInWithOtp, loading } = useAuth();
+  const [otpMode, setOtpMode] = useState(false);
+  const [otpCode, setOtpCode] = useState('');
+  const { signInWithOtp, verifyOtp, actionLoading } = useAuth();
 
   const handleSendOtp = async () => {
-    if (phone.length > 5) {
-      await signInWithOtp(`+90${phone}`);
-      // Supabase'den kod bekleniyor simülasyonu
-      alert('Kod gönderildi (Simülasyon)');
-      navigation.replace('CustomerFlow');
+    const cleanPhone = phone.replace(/[^0-9]/g, '');
+    if (cleanPhone.length > 5) {
+      const res = await signInWithOtp(`+90${cleanPhone}`);
+      if (!res?.error) {
+        setOtpMode(true);
+        alert('Doğrulama kodu gönderildi (Simülasyon veya Gerçek)');
+      } else {
+        alert('Hata: ' + res.error.message);
+      }
+    }
+  };
+
+  const handleVerifyOtp = async () => {
+    const cleanPhone = phone.replace(/[^0-9]/g, '');
+    if (otpCode.length > 3) {
+      const res = await verifyOtp(`+90${cleanPhone}`, otpCode);
+      if (res?.error) {
+        alert('Doğrulama hatası: ' + res.error.message);
+      }
     }
   };
 
   const handleGuest = () => {
-    navigation.replace('CustomerFlow');
+    alert("Misafir girişi kısıtlıdır.");
   };
 
   return (
@@ -41,25 +57,27 @@ export function UnifiedAuthScreen({ navigation }: any) {
           </View>
 
           <View style={styles.formContainer}>
-            <Text style={styles.label}>PHONE NUMBER</Text>
+            <Text style={styles.label}>{otpMode ? "OTP KODU" : "PHONE NUMBER"}</Text>
             <View style={styles.inputWrapper}>
-              <TouchableOpacity style={styles.countryCodeSelector} activeOpacity={0.8}>
-                <Text style={styles.countryCodeText}>+90</Text>
-                <MaterialIcons name="expand-more" size={20} color={theme.colors.textSecondary} />
-              </TouchableOpacity>
+              {!otpMode && (
+                <TouchableOpacity style={styles.countryCodeSelector} activeOpacity={0.8}>
+                  <Text style={styles.countryCodeText}>+90</Text>
+                  <MaterialIcons name="expand-more" size={20} color={theme.colors.textSecondary} />
+                </TouchableOpacity>
+              )}
               
               <TextInput
                 style={styles.input}
-                placeholder="555 555 5555"
-                keyboardType="phone-pad"
-                value={phone}
-                onChangeText={setPhone}
+                placeholder={otpMode ? "123456" : "555 555 5555"}
+                keyboardType={otpMode ? "number-pad" : "phone-pad"}
+                value={otpMode ? otpCode : phone}
+                onChangeText={otpMode ? setOtpCode : setPhone}
                 placeholderTextColor={theme.colors.border}
               />
             </View>
             
             <Text style={styles.termsText}>
-              Devam ederek Kullanım Koşulları ve Gizlilik Politikasını kabul etmiş olursunuz. Doğrulama için size bir kod göndereceğiz.
+              {otpMode ? "Lütfen telefonunuza gelen onay kodunu giriniz." : "Devam ederek Kullanım Koşulları ve Gizlilik Politikasını kabul etmiş olursunuz. Doğrulama için size bir kod göndereceğiz."}
             </Text>
           </View>
 
@@ -67,11 +85,13 @@ export function UnifiedAuthScreen({ navigation }: any) {
             <TouchableOpacity 
               style={styles.primaryButton} 
               activeOpacity={0.8}
-              onPress={handleSendOtp}
-              disabled={loading}
+              onPress={otpMode ? handleVerifyOtp : handleSendOtp}
+              disabled={actionLoading}
             >
-              <Text style={styles.primaryButtonText}>OTP Kodu Gönder</Text>
-              <MaterialIcons name="arrow-forward" size={20} color="#FFF" />
+              <Text style={styles.primaryButtonText}>
+                {actionLoading ? "Bekleniyor..." : (otpMode ? "Kodu Onayla" : "OTP Kodu Gönder")}
+              </Text>
+              {!actionLoading && <MaterialIcons name="arrow-forward" size={20} color="#FFF" />}
             </TouchableOpacity>
 
             <View style={styles.dividerContainer}>

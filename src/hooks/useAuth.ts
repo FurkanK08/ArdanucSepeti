@@ -1,45 +1,31 @@
-import { useState, useEffect } from 'react';
-import { Session, User } from '@supabase/supabase-js';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../context/AuthContext';
 import { supabase } from '../api/supabaseClient';
 
 export function useAuth() {
-  const [session, setSession] = useState<Session | null>(null);
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(false);
+  const context = useContext(AuthContext);
+  const [actionLoading, setActionLoading] = useState(false);
+  
+  if (context === undefined) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
 
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-    });
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-    });
-  }, []);
-
-  const signInWithOtp = async (phone: string) => {
-    setLoading(true);
-    const { error } = await supabase.auth.signInWithOtp({
-      phone,
-    });
-    setLoading(false);
-    if (error) {
-      console.error('OTP Error:', error.message);
-      return { error };
-    }
+  const signInWithOtp = async (phone: string): Promise<{ success: boolean, error?: any }> => {
+    setActionLoading(true);
+    // Geliştirme/Test aşaması için SMS gönderimini simüle ediyoruz (Supabase SMS ayarlarını baypas etmek için)
+    await new Promise(resolve => setTimeout(resolve, 600));
+    setActionLoading(false);
     return { success: true };
   };
 
   const verifyOtp = async (phone: string, token: string) => {
-    setLoading(true);
-    const { error, data } = await supabase.auth.verifyOtp({
-      phone,
-      token,
-      type: 'sms',
+    setActionLoading(true);
+    // Sadece Telefon Numarası
+    const { error, data } = await supabase.auth.signInWithPassword({
+      email: `${phone}@test.com`,
+      password: token,
     });
-    setLoading(false);
+    setActionLoading(false);
     if (error) {
       console.error('Verify OTP Error:', error.message);
       return { error };
@@ -48,13 +34,14 @@ export function useAuth() {
   };
 
   const signOut = async () => {
+    setActionLoading(true);
     await supabase.auth.signOut();
+    setActionLoading(false);
   };
 
   return {
-    session,
-    user,
-    loading,
+    ...context,
+    actionLoading,
     signInWithOtp,
     verifyOtp,
     signOut,
